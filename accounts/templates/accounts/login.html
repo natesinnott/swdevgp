@@ -1,0 +1,7 @@
+<h2>Login to your Sky Health Account</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
+<p>Don't have a Sky Health Account? <a href="{% url 'register' %}">Register</a>.</p>
