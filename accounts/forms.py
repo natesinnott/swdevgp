@@ -20,3 +20,6 @@ class RegisterForm(UserCreationForm):
             'password2',
             'team'
         )
+        widgets = (
+            
+        )
