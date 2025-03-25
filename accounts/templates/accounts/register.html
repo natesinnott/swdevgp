@@ -49,6 +49,13 @@
         </div>
         {% endif %}
     </div>
+    <div class="team-selection">
+        {{ form.team }}
+        {% if form.team.errors %}
+        <div class="team-selection-error">
+            {{ form.team.errors }}
+        </div>
+    </div>
     <div class="password-help-text">
         {{ form.password1.help_text }}
     </div>
