@@ -1,0 +1,33 @@
+/*EN FILE*/
+@font-face {
+    font-family: 'SkyRegular';
+    src: url('/static/fonts/sky-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SkyMedium';
+    src: url('/static/fonts/sky-medium.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal
+}
+
+body {
+    font-family: 'SkyRegular';
+    background-color: #f4f4f9;
+    color: #333;
+    height: 100vh;
+    margin: 0;
+}
+
+h2 {
+    font-family: 'SkyMedium';
+    font-size: 2rem;
+    color: #2c3e50;
+    text-align: center;
+}
+
+button{
+    font-family: 'SkyMedium';
+}
+
