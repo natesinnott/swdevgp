@@ -133,16 +133,16 @@ a:hover {
     height: 30vh;
 }
 .signup input{
-    width: 15vw;
+    width: 19vw;
     height: 3vh;
-    float: right;
+    
    
 } 
 
 .signup select{
-    width: 15vw;
+    width: 19vw;
     height: 3vh;
-    float: right;
+    
 }
 .fields {
     display: grid;
@@ -150,6 +150,10 @@ a:hover {
     gap: 10px;
     width: 100%;
     overflow-y: auto;
+}
+
+input.error {
+    border: 2px solid red;
 }
 
 .password-help-text {
@@ -181,4 +185,8 @@ a:hover {
     font-weight: bold;
     line-height: 1.5;
     color: red;
+}
+
+input.error, select.error {
+    border: 2px solid red;
 }
