@@ -1,7 +1,22 @@
-<h2>Login to your Sky Health Account</h2>
-<form method="POST">
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/loginCSS.css' %}">
+    <title>Login to SkyHealth</title>
+</head>
+<img src="{% static 'images/healthlogo.png' %}">
+<form method="POST" class="login">
+
+    <h2>Login to your Sky Health Account</h2>
+    <div class="loginform"></div>
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
+    <button type="submit">login</button>
+    </div>
+
 </form>
-<p>Don't have a Sky Health Account? <a href="{% url 'register' %}">Register</a>.</p>
+<div class="redirect-text">
+    <p>Don't have a Sky Health Account? <a href="{% url 'register' %}">Register</a>.</p>
+</div>
+
+</html>
