@@ -92,7 +92,7 @@ nav li a:hover {
 
 .welcome h2 {
     font-size: 40px;
-    color: rgb(56, 56, 56);
+    color: rgb(51, 51, 51);
     position: absolute;
     top: 5.5vh; 
     left: 250px; 
@@ -100,7 +100,7 @@ nav li a:hover {
 
 #datetime {
     font-size: 40px;
-    color: rgb(56, 56, 56);
+    color: rgb(51, 51, 51);
     font-weight: bold;
     position: absolute;
     top: 10vh;
