@@ -7,7 +7,7 @@ class RegisterForm(UserCreationForm):
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
     team = forms.ModelChoiceField(
     queryset=Team.objects.all(),
-    empty_label="Team",
+    empty_label="Select your Team",
     widget=forms.Select(attrs={'placeholder': 'Team'})
 )
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'placeholder': 'Password'}), help_text=UserCreationForm.base_fields['password1'].help_text)
