@@ -12,36 +12,64 @@
     <div class ="signupform">
     <div class="fields">
         <div class="first-name-field">
-            <label for="{{ form.first_name.id_for_label }}">First Name:</label>
             {{ form.first_name }}
+            {% if form.first_name.errors %}
+                <script>
+                    document.querySelector("[name='{{ form.first_name.name }}']").classList.add('error');
+                </script>
+            {% endif %}
         </div>
         <div class="last-name-field">
-            <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
             {{ form.last_name }}
+            {% if form.last_name.errors %}
+                <script>
+                    document.querySelector("[name='{{ form.last_name.name }}']").classList.add('error');
+                </script>
+            {% endif %}
         </div>
         <div class="username-field">
-            <label for="{{ form.username.id_for_label }}">Username:</label>
             {{ form.username }}
+            {% if form.username.errors %}
+                <script>
+                    document.querySelector("[name='{{ form.username.name }}']").classList.add('error');
+                </script>
+            {% endif %}
         </div>
         <div class="email-field">
-            <label for="{{ form.email.id_for_label }}">Email:</label>
             {{ form.email }}
+            {% if form.email.errors %}
+                <script>
+                    document.querySelector("[name='{{ form.email.name }}']").classList.add('error');
+                </script>
+            {% endif %}
         </div>
         <div class="password1-field">
-            <label for="{{ form.password1.id_for_label }}">Password:</label>
             {{ form.password1 }}
+            {% if form.password1.errors or form.password2.errors %}
+                <script>
+                    document.querySelector("[name='{{ form.password1.name }}']").classList.add('error');
+                </script>
+            {% endif %}
         </div>
         <div class="password2-field">
-            <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
             {{ form.password2 }}
+            {% if form.password1.errors or form.password2.errors %}
+                <script>
+                    document.querySelector("[name='{{ form.password2.name }}']").classList.add('error');
+                </script>
+            {% endif %}
         </div>
         <div class="team-selection">
-            <label for="{{ form.team.id_for_label }}">Team:</label>
             {{ form.team }}
+            {% if form.team.errors %}
+                <script>
+                    document.querySelector("[name='{{ form.team.name }}']").classList.add('error');
+                </script>
+            {% endif %}
         </div>
     </div>
     <div class="password-help-text">
-        {% if not form.password1.errors and not form.password2.errors %}
+        {% if not form.password1.errors and not form.password2.errors and not form.email.errors and not form.team.errors and not form.username.errors %}
             {{ form.password1.help_text }}
         {% endif %}
         {% if form.first_name.errors %}

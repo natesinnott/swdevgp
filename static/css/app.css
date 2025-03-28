@@ -39,7 +39,7 @@ nav img {
     margin: 20px;
 }
 
-ul {
+nav ul {
     list-style-type: none;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@ ul {
     
 }
 
-li a {
+nav li a {
     display: block;
     text-align: center;
     padding: 25px 16px;
@@ -60,11 +60,11 @@ li a {
     border-bottom: solid #e8e8e8;
 }
 
-li:first-child a {
+nav li:first-child a {
     border-top: solid #e8e8e8;
 }
 
-li a:hover {
+nav li a:hover {
     background-color: #f0f0f0;
 }
 
@@ -92,6 +92,7 @@ li a:hover {
 
 .welcome h2 {
     font-size: 40px;
+    color: rgb(56, 56, 56);
     position: absolute;
     top: 5.5vh; 
     left: 250px; 
@@ -99,7 +100,19 @@ li a:hover {
 
 #datetime {
     font-size: 40px;
+    color: rgb(56, 56, 56);
+    font-weight: bold;
     position: absolute;
     top: 10vh;
     right: 20px; 
+}
+
+.active img{
+    position: fixed;
+    width: 7px;
+    height: 73px;
+    float: left;
+    left: 0;
+    margin: 0;
+    padding: 0;
 }
