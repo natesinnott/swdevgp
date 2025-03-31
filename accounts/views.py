@@ -14,7 +14,7 @@ def register(request):
             user.save()
       
             login(request, user)
-            return redirect("home")
+            return redirect("dashboard")
         
     else:
         form = RegisterForm()
@@ -26,7 +26,7 @@ def user_login(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect("home")
+            return redirect("dashboard")
     else:
         form = AuthenticationForm()
     return render(request, "accounts/login.html", {"form": form})
