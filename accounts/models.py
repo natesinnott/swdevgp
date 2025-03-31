@@ -23,6 +23,9 @@ class Department(models.Model):
     class Meta:
         db_table = 'Department'
 
+    def __str__(self):
+        return self.departmentName
+
 class Team(models.Model):
     team = models.AutoField(db_column='teamID', primary_key=True)  
     department = models.ForeignKey(Department, models.DO_NOTHING, db_column='departmentID', default=0)  
