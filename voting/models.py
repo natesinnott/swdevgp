@@ -5,59 +5,85 @@ from accounts import Employee
 
 
 class Question(models.Model):
-    questionID = models.IntegerField(db_column='questionID', unique='True', blank='False')
-    questionTitle = models.CharField(db_column='questionTitle', max_length=100)
-    greenDesc = models.CharField(db_column='greenDescription', max_length=300)
-    amberDesc = models.CharField(db_column='amberDescription', max_length=300)
-    redDesc = models.CharField(db_column='redDescription', max_length=300)
+    id = models.AutoField(primary_key=True)
+    question_title = models.CharField(max_length=100)
+    green_desc = models.CharField(max_length=300)
+    amber_desc = models.CharField(max_length=300)
+    red_desc = models.CharField(max_length=300)
 
     class Meta:
         db_table = 'Question'
 
     def __str__(self):
-        return self.questionTitle
+        return self.question_title
     
 class Survey(models.Model):
-    surveyID = models.IntegerField(db_column='surveyID')
-    surveyTitle = models.CharField(db_column='surveyTitle', max_length=100)
-    surveyDescription = models.CharField(db_column='surveyDescription', max_length=300)
-    surveyType = models.CharField(db_column='surveyType', max_length=100)
+    id = models.AutoField(primary_key=True)
+    survey_title = models.CharField(max_length=100)
+    survey_description = models.CharField(max_length=300)
+    survey_type = models.CharField(max_length=100)
+    questions = models.ManyToManyField(Question, through='SurveyDetail', related_name='surveys')
 
     class Meta:
         db_table = 'Survey'
 
     def __str__(self):
-        return self.surveyTitle
+        return self.survey_title
 
-class Response(models.Model):
-    responseID = models.IntegerField(db_column='responseID')
-    employeeID = models.ForeignKey(Employee, models.DO_NOTHING, db_column='employeeID')
-    surveyID = models.ForeignKey(Survey, models.DO_NOTHING, db_column='surveyID')
-    quarter = models.IntegerField(db_column='quarter')
-    year = models.IntegerField(db_column='year')
-
-    class Meta:
-        db_table = 'Response'
-
-    def __str__(self):
-        return self.responseID
-    
-class surveyDetail(models.Model):
-    surveyDetailID = models.IntegerField(db_column='surveyDetailID', serialize='True')
-    surveyID = models.ForeignKey(Survey, models.DO_NOTHING, db_column='surveyID')
-    questionID = models.ForeignKey(Question, models.DO_NOTHING, db_column='questionID')
+class SurveyResponse(models.Model):
+    id = models.AutoField(primary_key=True)
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
+    quarter = models.IntegerField()
+    year = models.IntegerField()
 
     class Meta:
-        db_table = 'surveyDetail'
+        db_table = 'SurveyResponse'
 
     def __str__(self):
-        return self.surveyDetailID
+        return (str(self.quarter) + str(self.year) + "by" + self.employee.first_name + " " + self.employee.last_name)
+    
+class SurveyDetail(models.Model):
+    id = models.AutoField(primary_key=True)
+    survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'SurveyDetail'
+        unique_together = ('survey', 'question')
+
+    def __str__(self):
+        return f"{self.survey.survey_title} - {self.question.question_title}"
     
 
-class responseDetail(models.Model):
-    responseDetailID = models.IntegerField(db_column='responseDetailID', serialize='True')
-    questionID = models.ForeignKey(Question, models.DO_NOTHING, db_column='questionID')
-    responseID = models.ForeignKey(Response, models.DO_NOTHING, db_column='responseID')
-    answer = models.CharField(db_column='answer', max_length=10)
-    improvementState = models.IntegerField(db_column='improvementState')
-    comment = models.CharField(db_column='comment', max_length=1000)
+class SurveyResponseDetail(models.Model):
+    id = models.AutoField(primary_key=True)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    response = models.ForeignKey(SurveyResponse, on_delete=models.CASCADE)
+    # answer choices for survey response
+    GREEN = 'green'
+    AMBER = 'amber'
+    RED = 'red'
+    answer_choices = [
+        (GREEN, 'Green'),
+        (AMBER, 'Amber'),
+        (RED, 'Red'),
+    ]
+    answer = models.CharField(choices=answer_choices , max_length=10)
+    # improvement state choices for survey response
+    STABLE = 'stable'
+    IMPROVING = 'improving'
+    GETTING_WORSE = 'getting worse'
+    improvement_choices = [
+        (STABLE, 'Stable'),
+        (IMPROVING, 'Improving'),
+        (GETTING_WORSE, 'Getting Worse'),
+    ]
+    improvement_state = models.CharField(choices=improvement_choices, max_length=20)
+    
+    comment = models.TextField(blank=True, null=True)
+
+    class Meta:
+        db_table = 'SurveyResponseDetail'
+    def __str__(self):
+        return f"Detail {self.id} for Response {self.response.id} on Question {self.question.question_title}"
