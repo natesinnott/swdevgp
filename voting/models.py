@@ -1,5 +1,5 @@
 from django.db import models
-from accounts import Employee
+from accounts.models import Employee
 
 # Create your models here.
 
@@ -53,8 +53,7 @@ class SurveyDetail(models.Model):
         unique_together = ('survey', 'question')
 
     def __str__(self):
-        return f"{self.survey.survey_title} - {self.question.question_title}"
-    
+        return f"{self.survey.survey_title} - {self.question.question_title}"  
 
 class SurveyResponseDetail(models.Model):
     id = models.AutoField(primary_key=True)
