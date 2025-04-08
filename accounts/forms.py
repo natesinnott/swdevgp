@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django import forms
 from .models import CustomUser, Employee, Team
 
+# This form is used to create a new user account. It inherits from UserCreationForm, which provides the basic functionality for creating a user.
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
     team = forms.ModelChoiceField(
