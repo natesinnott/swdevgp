@@ -1,9 +1,10 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/account.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/account.css' %}">
     <script src="{% static 'javascripts/datetime.js' %}"></script>
     <title>My Account</title>
 </head>
@@ -17,11 +18,12 @@
     <nav>
         <img src="{% static 'images/navbarlogo.png' %}">
         <ul>
-            
+
             <li><a href="{% url 'dashboard' %}">Home</a></li>
             <li><a href="">My Survey</a></li>
             <li><a href="">Trends</a></li>
-            <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="{% url 'account' %}">Account</a></li>
+            <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="{% url 'account' %}">Account</a>
+            </li>
         </ul>
         <a href="{% url 'logout' %}" class="logout-link">
             <img src="{% static 'images/signout.png' %}">
@@ -29,12 +31,41 @@
         </a>
     </nav>
 
-    <!-- White box in the middle -->
-    <div class="white-box"> 
-        <p>
-            <h3>My Account</h3>
-        </p>
-    </div>
-
+    <!-- White box in the middle-ish -->
+    <div class="white-box">
+        <p>My Account</p>
+        <!-- The profile picture -->
+        <div class="profile-icon">
+            <img src="{% static 'images/profile.png' %}">
+        </div>
+        <!-- The full name of the User -->
+        <div class="profile-name">
+            <p><strong> John Doe</strong></p>
+        </div>
+        <!-- The role of the user -->
+        <div class="profile-role">
+            <p><strong>Senior iOS Engineer</strong></p>
+        </div>
+        <!-- The button the user presses to take them to the form page -->
+        <div button class="edit-profile-button">
+            <a href=""><strong> Change Account Details </strong></a>
+        </div>
+        <!-- The username of the user -->
+        <div class="profile-username">
+            <p>skyJohnD04</p>
+        </div>
+        <!-- The ID of the user -->
+        <div class="profile-id">
+            <p>Sky-73129434</p>
+        </div>
+        <!-- The email address of the user -->
+        <div class="profile-email">   
+            <p>j.doe@sky.co.uk</p>
+        </div>
+        <!-- The team that the user is in -->
+        <div class="profile-team">
+            <p>AlphaB21</p>
+        </div>
 </body>
+
 </html>
