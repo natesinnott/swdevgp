@@ -34,37 +34,51 @@
     <!-- White box in the middle-ish -->
     <div class="white-box">
         <p>My Account</p>
-        <!-- The profile picture -->
-        <div class="profile-icon">
-            <img src="{% static 'images/profile.png' %}">
+        <!-- The profile details, including the name, role, and button to edit account details -->
+        <div class="profile-details">
+            <!-- The profile picture -->
+            <div class="profile-icon">
+                <img src="{% static 'images/ProfileIcon.png' %}">
+            </div>
+            <!-- The full name of the User -->
+            <div class="profile-name">
+                <p><strong> John Doe</strong></p>
+            </div>
+            <!-- The role of the user -->
+            <div class="profile-role">
+                <p><strong>Senior iOS Engineer</strong></p>
+            </div>
+            <!-- The button the user presses to take them to the form page -->
+            <div button class="edit-profile-button">
+                <a href=""><strong> Change Account Details </strong></a>
+            </div>
         </div>
-        <!-- The full name of the User -->
-        <div class="profile-name">
-            <p><strong> John Doe</strong></p>
-        </div>
-        <!-- The role of the user -->
-        <div class="profile-role">
-            <p><strong>Senior iOS Engineer</strong></p>
-        </div>
-        <!-- The button the user presses to take them to the form page -->
-        <div button class="edit-profile-button">
-            <a href=""><strong> Change Account Details </strong></a>
-        </div>
-        <!-- The username of the user -->
-        <div class="profile-username">
-            <p>skyJohnD04</p>
-        </div>
-        <!-- The ID of the user -->
-        <div class="profile-id">
-            <p>Sky-73129434</p>
-        </div>
-        <!-- The email address of the user -->
-        <div class="profile-email">   
-            <p>j.doe@sky.co.uk</p>
-        </div>
-        <!-- The team that the user is in -->
-        <div class="profile-team">
-            <p>AlphaB21</p>
+        <!-- The further profile details, including the username, ID, email address, and team name -->
+        <div class="profile-details-2">
+            <div class="profile-info-row-1">
+                <!-- The username of the user -->
+                <div class="profile-username">
+                    <img src="{% static 'images/Icon-1.png' %}">
+                    <p>skyJohnD04</p>
+                </div>
+                <!-- The ID of the user -->
+                <div class="profile-id">
+                    <img src="{% static 'images/Icon-2.png' %}">
+                    <p>Sky-73129434</p>
+                </div>
+            </div>
+            <div class="profile-info-row-2">
+                <!-- The email address of the user -->
+                <div class="profile-email">
+                    <img src="{% static 'images/Icon-3.png' %}">
+                    <p>j.doe@sky.co.uk</p>
+                </div>
+                <!-- The team of the user -->
+                <div class="profile-team">
+                    <img src="{% static 'images/Icon-4.png' %}">
+                    <p>AlphaB21</p>
+                </div>
+            </div>
         </div>
 </body>
 
