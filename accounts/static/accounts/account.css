@@ -1,0 +1,146 @@
+.white-box {
+    background-color: rgb(255, 255, 255);
+    width: 79%;
+    height: 85%;
+    margin: 10% 0% 0% 15%; 
+    padding: 0.05% 1%; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.white-box p {
+    text-align: left;
+    font-size: 50px;
+    color: #919191;
+    margin: 10px 0;
+}
+
+.profile-icon img {
+    clear: both;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin: 10px 20px 50px 10px;
+    float: left;
+}
+
+.profile-name p {
+    display: block;
+    margin-top: 50px;
+    font-size: 70px;
+    color: #f5296d;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.profile-role p{
+    font-size: 40px;
+    color: #919191;
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.edit-profile-button {
+    background-color: #ffffff;
+    border: 4px solid #fd6843;
+    margin-top: 5px;
+    float: left;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.edit-profile-button a {
+    padding: 15px;
+    color: #fd6843;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.profile-username p {
+    display: block;
+    font-size: 50px;
+    color: #4b50fc;
+    margin: 150px 5px 5px 5px;
+    padding: 0;
+}
+
+.profile-id p {
+    display: block;
+    font-size: 50px;
+    color: #4b50fc;
+    margin: 5px;
+    padding: 0;
+}
+
+.profile-email p {
+    display: block;
+    font-size: 50px;
+    color: #4b50fc;
+    margin: 5px;
+    padding: 0;
+}
+
+.profile-team p {
+    display: block;
+    font-size: 50px;
+    color: #4b50fc;
+    margin: 5px;
+    padding: 0;
+}
+
+.profile-details-2 {
+    clear: both; 
+}
+
+.profile-info-row-1 {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: left; 
+    gap: 71px;
+    margin-bottom: 20px;
+}
+
+.profile-info-row-2 {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: left; 
+}
+
+.profile-username,
+.profile-id,
+.profile-email,
+.profile-team {
+    flex: 0; 
+    display: flex; 
+    align-items: left; 
+}
+
+.profile-username img,
+.profile-id img,
+.profile-email img,
+.profile-team img {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px; 
+}
+
+.profile-username p,
+.profile-id p,
+.profile-email p,
+.profile-team p {
+    font-size: 60px;
+    color: #4b50fc;
+    margin: 0; 
+    padding: 0;
+}
+
+.profile-id {
+    flex: 1;
+}
+
+.profile-username,
+.profile-email {
+    margin-right: 50px;
+}
