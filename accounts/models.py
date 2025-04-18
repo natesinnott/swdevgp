@@ -4,6 +4,7 @@ from django.conf import settings
 
 # Create your models here.
 
+# CustomUser model extends the AbstractUser model to include additional fields (accessLevel, team, and department)
 class CustomUser(AbstractUser):
     accessLevel = models.IntegerField(db_column='accessLevel', default=1)
     team = models.ForeignKey('Team', models.SET_NULL, db_column='teamID', blank=True, null=True)
@@ -15,6 +16,7 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.username
 
+# Department model represents a department in the organisation
 class Department(models.Model):
     departmentID = models.AutoField(db_column='departmentID', primary_key=True) 
     departmentName = models.CharField(db_column='departmentName', max_length=100)  
@@ -26,6 +28,7 @@ class Department(models.Model):
     def __str__(self):
         return self.departmentName
 
+# Team model represents a team within a department
 class Team(models.Model):
     team = models.AutoField(db_column='teamID', primary_key=True)  
     department = models.ForeignKey(Department, models.DO_NOTHING, db_column='departmentID', default=0)  
@@ -38,6 +41,7 @@ class Team(models.Model):
     class Meta:
         db_table = 'Team'
 
+# Employee model represents an employee in the organisation
 class Employee(models.Model):
     employeeID = models.AutoField(db_column='employeeID', primary_key=True) 
     team = models.ForeignKey('Team', models.DO_NOTHING, db_column='teamID', blank=True, null=True)  
