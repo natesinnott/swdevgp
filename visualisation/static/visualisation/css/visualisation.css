@@ -11,6 +11,7 @@ main.trends-page {
 
 /* Page title spans full width of flex container */
 .trends-title {
+    padding-top: 2rem;
     margin: 0 0 1.5rem;
     font-size: 3.75rem;
     font-weight: 600;

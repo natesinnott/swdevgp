@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'accounts/loginCSS.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/loginCSS.css' %}">
     <title>Signup To SkyHealth</title>
 </head>
 
@@ -11,7 +11,7 @@
     <div id="mobile-overlay">
         <p>Please view this site on a desktop or tablet for the best experience.</p>
     </div>
-    <img src="{% static 'images/healthlogo.png' %}">
+    <img src="{% static 'accounts/images/healthlogo.png' %}">
     <form method="POST" class="signup">
         <h2>Sign up</h2>
         {% csrf_token %}
@@ -75,8 +75,7 @@
                 </div>
             </div>
             <div class="password-help-text">
-                {% if not form.password1.errors and not form.password2.errors and not form.email.errors and not
-                form.team.errors and not form.username.errors %}
+                {% if not form.password1.errors and not form.password2.errors and not form.email.errors and not form.team.errors and not form.username.errors %}
                 {{ form.password1.help_text }}
                 {% endif %}
                 {% if form.first_name.errors %}
