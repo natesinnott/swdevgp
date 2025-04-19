@@ -6,23 +6,30 @@
     <script src="{% static 'javascripts/datetime.js' %}"></script>
 
 </head>
-<div class="welcome">
-    <h2>Hello, {{ request.user.first_name }}</h2>
-</div>
-<div id="datetime"></div>
 
-<nav>
-    <img src="{% static 'images/navbarlogo.png' %}">
-    <ul>
-        
-        <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="">Home</a></li>
-        <li><a href="">My Survey</a></li>
-        <li><a href="{% url 'visualisation' %}">Trends</a></li>
-        <li><a href="{% url 'account' %}">Account</a></li>
-    </ul>
-    <a href="{% url 'logout' %}" class="logout-link">
-        <img src="{% static 'images/signout.png' %}">
-        <p>Sign out</p>
-    </a>
-</nav>
+<body>
+    <div id="mobile-overlay">
+        <p>Please view this site on a desktop or tablet for the best experience.</p>
+    </div>
+    <div class="welcome">
+        <h2>Hello, {{ request.user.first_name }}</h2>
+    </div>
+    <div id="datetime"></div>
+
+    <nav>
+        <img src="{% static 'images/navbarlogo.png' %}">
+        <ul>
+
+            <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="">Home</a></li>
+            <li><a href="">My Survey</a></li>
+            <li><a href="{% url 'visualisation' %}">Trends</a></li>
+            <li><a href="{% url 'account' %}">Account</a></li>
+        </ul>
+        <a href="{% url 'logout' %}" class="logout-link">
+            <img src="{% static 'images/signout.png' %}">
+            <p>Sign out</p>
+        </a>
+    </nav>
+</body>
+
 </html>

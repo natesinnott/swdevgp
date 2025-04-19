@@ -5,117 +5,124 @@
     <link rel="stylesheet" type="text/css" href="{% static 'accounts/loginCSS.css' %}">
     <title>Signup To SkyHealth</title>
 </head>
-<img src="{% static 'images/healthlogo.png' %}">
-<form method="POST" class="signup">
-    <h2>Sign up</h2>
-    {% csrf_token %}
-    <div class ="signupform">
-    <div class="fields">
-        <div class="first-name-field">
-            {{ form.first_name }}
-            {% if form.first_name.errors %}
-                <script>
-                    document.querySelector("[name='{{ form.first_name.name }}']").classList.add('error');
-                </script>
-            {% endif %}
-        </div>
-        <div class="last-name-field">
-            {{ form.last_name }}
-            {% if form.last_name.errors %}
-                <script>
-                    document.querySelector("[name='{{ form.last_name.name }}']").classList.add('error');
-                </script>
-            {% endif %}
-        </div>
-        <div class="username-field">
-            {{ form.username }}
-            {% if form.username.errors %}
-                <script>
-                    document.querySelector("[name='{{ form.username.name }}']").classList.add('error');
-                </script>
-            {% endif %}
-        </div>
-        <div class="email-field">
-            {{ form.email }}
-            {% if form.email.errors %}
-                <script>
-                    document.querySelector("[name='{{ form.email.name }}']").classList.add('error');
-                </script>
-            {% endif %}
-        </div>
-        <div class="password1-field">
-            {{ form.password1 }}
-            {% if form.password1.errors or form.password2.errors %}
-                <script>
-                    document.querySelector("[name='{{ form.password1.name }}']").classList.add('error');
-                </script>
-            {% endif %}
-        </div>
-        <div class="password2-field">
-            {{ form.password2 }}
-            {% if form.password1.errors or form.password2.errors %}
-                <script>
-                    document.querySelector("[name='{{ form.password2.name }}']").classList.add('error');
-                </script>
-            {% endif %}
-        </div>
-        <div class="team-selection">
-            {{ form.team }}
-            {% if form.team.errors %}
-                <script>
-                    document.querySelector("[name='{{ form.team.name }}']").classList.add('error');
-                </script>
-            {% endif %}
-        </div>
-    </div>
-    <div class="password-help-text">
-        {% if not form.password1.errors and not form.password2.errors and not form.email.errors and not form.team.errors and not form.username.errors %}
-            {{ form.password1.help_text }}
-        {% endif %}
-        {% if form.first_name.errors %}
-        <div class="first-name-error">
-            {{ form.first_name.errors }}
-        </div>
-        {% endif %}
-        {% if form.last_name.errors %}
-        <div class="last-name-error">
-            {{ form.last_name.errors }}
-        </div>
-        {% endif %}
-        {% if form.username.errors %}
-        <div class="username-error">
-            {{ form.username.errors }}
-        </div>
-        {% endif %}
-        {% if form.email.errors %}
-        <div class="email-error">
-            {{ form.email.errors }}
-        </div>
-        {% endif %}
-        {% if form.password1.errors %}
-        <div class="password1-error">
-            {{ form.password1.errors }}
-        </div>
-        {% endif %}
-        {% if form.password2.errors %}
-        <div class="password2-error">
-            {{ form.password2.errors }}
-        </div>
-        {% endif %}
-        {% if form.team.errors %}
-        <div class="team-selection-error">
-            {{ form.team.errors }}
-        </div>
-        {% endif %}
-    </div>
-</div>
-    <div class="register-button">
-        <button type="submit">Register</button>
-    </div>
 
-</form>
-<div class="redirect-text">
-    <p>Already have a Sky Health Account? <a href="{% url 'login' %}">Login here</a>.</p>
-</div>
+<body>
+    <div id="mobile-overlay">
+        <p>Please view this site on a desktop or tablet for the best experience.</p>
+    </div>
+    <img src="{% static 'images/healthlogo.png' %}">
+    <form method="POST" class="signup">
+        <h2>Sign up</h2>
+        {% csrf_token %}
+        <div class="signupform">
+            <div class="fields">
+                <div class="first-name-field">
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                    <script>
+                        document.querySelector("[name='{{ form.first_name.name }}']").classList.add('error');
+                    </script>
+                    {% endif %}
+                </div>
+                <div class="last-name-field">
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                    <script>
+                        document.querySelector("[name='{{ form.last_name.name }}']").classList.add('error');
+                    </script>
+                    {% endif %}
+                </div>
+                <div class="username-field">
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                    <script>
+                        document.querySelector("[name='{{ form.username.name }}']").classList.add('error');
+                    </script>
+                    {% endif %}
+                </div>
+                <div class="email-field">
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                    <script>
+                        document.querySelector("[name='{{ form.email.name }}']").classList.add('error');
+                    </script>
+                    {% endif %}
+                </div>
+                <div class="password1-field">
+                    {{ form.password1 }}
+                    {% if form.password1.errors or form.password2.errors %}
+                    <script>
+                        document.querySelector("[name='{{ form.password1.name }}']").classList.add('error');
+                    </script>
+                    {% endif %}
+                </div>
+                <div class="password2-field">
+                    {{ form.password2 }}
+                    {% if form.password1.errors or form.password2.errors %}
+                    <script>
+                        document.querySelector("[name='{{ form.password2.name }}']").classList.add('error');
+                    </script>
+                    {% endif %}
+                </div>
+                <div class="team-selection">
+                    {{ form.team }}
+                    {% if form.team.errors %}
+                    <script>
+                        document.querySelector("[name='{{ form.team.name }}']").classList.add('error');
+                    </script>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="password-help-text">
+                {% if not form.password1.errors and not form.password2.errors and not form.email.errors and not
+                form.team.errors and not form.username.errors %}
+                {{ form.password1.help_text }}
+                {% endif %}
+                {% if form.first_name.errors %}
+                <div class="first-name-error">
+                    {{ form.first_name.errors }}
+                </div>
+                {% endif %}
+                {% if form.last_name.errors %}
+                <div class="last-name-error">
+                    {{ form.last_name.errors }}
+                </div>
+                {% endif %}
+                {% if form.username.errors %}
+                <div class="username-error">
+                    {{ form.username.errors }}
+                </div>
+                {% endif %}
+                {% if form.email.errors %}
+                <div class="email-error">
+                    {{ form.email.errors }}
+                </div>
+                {% endif %}
+                {% if form.password1.errors %}
+                <div class="password1-error">
+                    {{ form.password1.errors }}
+                </div>
+                {% endif %}
+                {% if form.password2.errors %}
+                <div class="password2-error">
+                    {{ form.password2.errors }}
+                </div>
+                {% endif %}
+                {% if form.team.errors %}
+                <div class="team-selection-error">
+                    {{ form.team.errors }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="register-button">
+            <button type="submit">Register</button>
+        </div>
+
+    </form>
+    <div class="redirect-text">
+        <p>Already have a Sky Health Account? <a href="{% url 'login' %}">Login here</a>.</p>
+    </div>
+</body>
 
 </html>
