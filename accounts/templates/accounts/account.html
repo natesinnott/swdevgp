@@ -4,7 +4,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'accounts/account.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/account.css' %}">
     <script src="{% static 'javascripts/datetime.js' %}"></script>
     <title>My Account</title>
 </head>
@@ -21,7 +21,7 @@
 
             <li><a href="{% url 'dashboard' %}">Home</a></li>
             <li><a href="">My Survey</a></li>
-            <li><a href="">Trends</a></li>
+            <li><a href="{% url 'visualisation' %}">Trends</a></li>
             <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="{% url 'account' %}">Account</a>
             </li>
         </ul>

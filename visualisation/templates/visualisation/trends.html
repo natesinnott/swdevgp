@@ -4,16 +4,15 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/visualisation.css' %}">
-    <script src="{% static 'javascripts/datetime.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'visualisation/css/visualisation.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Trends</title>
 </head>
 
 <body>
-    <div class="welcome">
-        <h2>Hello, {{ request.user.first_name }}</h2>
+    <div class="trends-title">
+        <h2>Trends</h2>
     </div>
-    <div id="datetime"></div>
 
     <nav>
         <img src="{% static 'images/navbarlogo.png' %}">
@@ -51,7 +50,6 @@
                         <label for="category">Category</label>
                         <select id="category" name="category">
                             <option value="" disabled selected>Select category</option>
-                            <!-- Options to be populated dynamically -->
                         </select>
                     </div>
 
@@ -59,7 +57,6 @@
                         <label for="start-quarter">Starting Quarter</label>
                         <select id="start-quarter" name="start_quarter">
                             <option value="" disabled selected>Select start</option>
-                            <!-- Options to be populated dynamically -->
                         </select>
                     </div>
 
@@ -67,7 +64,6 @@
                         <label for="end-quarter">Ending Quarter</label>
                         <select id="end-quarter" name="end_quarter">
                             <option value="" disabled selected>Select end</option>
-                            <!-- Options to be populated dynamically -->
                         </select>
                     </div>
 
@@ -75,10 +71,11 @@
             </form>
         </aside>
 
+        <!-- Main content area for the trends chart -->
+        <!-- TODO: Add CSS to size chart container dynamically. -->
         <section class="chart-container">
-            <!-- Placeholder for trends chart -->
-            <div id="chart-placeholder">
-                <!-- Chart will be rendered here by visualization team -->
+            <canvas id="trends-chart"></canvas>
+                <!-- Chart will be rendered here by Eeliya -->
             </div>
         </section>
     </main>
