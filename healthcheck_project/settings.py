@@ -130,6 +130,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # Project-level static folder
     BASE_DIR / "accounts/static",  # App-level static folder
+    BASE_DIR / "visualisation/static",  # App-level static folder
 ]
 
 # Default primary key field type

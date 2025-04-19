@@ -17,7 +17,7 @@
         
         <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="">Home</a></li>
         <li><a href="">My Survey</a></li>
-        <li><a href="">Trends</a></li>
+        <li><a href="{% url 'visualisation' %}">Trends</a></li>
         <li><a href="{% url 'account' %}">Account</a></li>
     </ul>
     <a href="{% url 'logout' %}" class="logout-link">

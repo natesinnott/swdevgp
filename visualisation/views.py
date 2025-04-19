@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+@login_required
+def trends(request):
+    return render(request, "visualisation/trends.html")
