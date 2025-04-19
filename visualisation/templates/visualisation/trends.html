@@ -3,6 +3,8 @@
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'visualisation/css/visualisation.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -13,26 +15,27 @@
     <div id="mobile-overlay">
         <p>Please view this site on a desktop or tablet for the best experience.</p>
     </div>
-    <div class="trends-title">
-        <h2>Trends</h2>
-    </div>
 
     <nav>
-        <img src="{% static 'images/navbarlogo.png' %}">
+        <img src="{% static 'images/navbarlogo.png' %}" alt="Sky Health Check logo">
         <ul>
 
             <li><a href="{% url 'dashboard' %}">Home</a></li>
             <li><a href="">My Survey</a></li>
-            <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="">Trends</a></li>
+            <li class="active">
+                <img src="{% static 'images/activenav.png' %}" alt="Active navigation icon">
+                <a href="{% url 'visualisation' %}">Trends</a>
+            </li>
             <li><a href="{% url 'account' %}">Account</a></li>
         </ul>
         <a href="{% url 'logout' %}" class="logout-link">
-            <img src="{% static 'images/signout.png' %}">
+            <img src="{% static 'images/signout.png' %}" alt="Sign out">
             <p>Sign out</p>
         </a>
     </nav>
 
     <main class="trends-page">
+        <h1 id="trends-heading" class="trends-title">Trends</h1>
         <aside class="filters">
             <form id="trends-filters">
                 <fieldset>
@@ -79,7 +82,6 @@
         <section class="chart-container">
             <canvas id="trends-chart"></canvas>
             <!-- Chart will be rendered here by Eeliya -->
-            </div>
         </section>
     </main>
 </body>
