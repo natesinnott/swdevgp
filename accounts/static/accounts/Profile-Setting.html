@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Settings</title>
+    <link href="Profile.css" rel="stylesheet" type="text/css">
+    <script src="{% static 'javascripts/datetime.js' %}"></script>
+    <style>
+        /* Ensure all text uses the same font as navigation bar */
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* New styles for greeting and datetime */
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+            /* Removed border-bottom */
+            margin-bottom: 20px;
+        }
+        
+        .greeting {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .datetime {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <img src="navbarlogo.png" alt="Logo">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">My Survey</a></li>
+            <li><a href="">Trends</a></li>
+            <li class="active"><img src="activenav.png" alt="Active"><a href="">Account</a></li>
+        </ul>
+        <a href="{% url 'logout' %}" class="logout-link">
+            <img src="signout.png" alt="Sign Out">
+            <p>Sign out</p>
+        </a>
+    </nav>
+
+    <div class="container">
+        <!-- Header bar with greeting and datetime - no bottom border -->
+        <div class="header-bar">
+            <div class="greeting">Hello, John Doe</div>
+            <div class="datetime" id="currentDateTime">Loading date and time...</div>
+        </div>
+        
+        <div class="card">
+            <h1>Profile Settings</h1>
+            
+            <div class="profile-header">
+                <div class="profile-pic-container">
+                    <!-- Fixed profile image that cannot be changed -->
+                    <img src="ProfileIcon.png" alt="Profile Picture" class="profile-pic">
+                </div>
+                
+                <div class="profile-info">
+                    <h2>John Doe</h2>
+                    <p>Team: Marketing</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3 class="section-title">Account Information</h3>
+                
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" value="JohnDoe">
+                    <p class="input-hint">This is how others will see you on the platform</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="team">Team</label>
+                    <input type="text" id="team" value="Marketing">
+                    <p class="input-hint">Enter your team or department name</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3 class="section-title">Password</h3>
+                
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword">
+                </div>
+                
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword">
+                    <p class="input-hint">Use at least 8 characters with a mix of letters, numbers & symbols</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm New Password</label>
+                    <input type="password" id="confirmPassword">
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-secondary">Cancel</button>
+                <button class="btn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Script to update the date and time
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('currentDateTime').textContent = now.toLocaleDateString('en-US', options);
+        }
+        
+        // Update the time immediately and then every minute
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
+    </script>
+</body>
+</html>
