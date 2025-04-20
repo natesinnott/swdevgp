@@ -1,22 +1,30 @@
 {% load static %}
 <html>
+
 <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'accounts/loginCSS.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/loginCSS.css' %}">
     <title>Login to SkyHealth</title>
 </head>
-<img src="{% static 'images/healthlogo.png' %}">
-<form method="POST" class="login">
 
-    <h2>Login to your Sky Health Account</h2>
-    <div class="loginform"></div>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">login</button>
+<body>
+    <div id="mobile-overlay">
+        <p>Please view this site on a desktop or tablet for the best experience.</p>
     </div>
+    <img src="{% static 'accounts/images/healthlogo.png' %}">
+    <form method="POST" class="login">
 
-</form>
-<div class="redirect-text">
-    <p>Don't have a Sky Health Account? <a href="{% url 'register' %}">Register</a>.</p>
-</div>
+        <h2>Login to your Sky Health Account</h2>
+        <div class="loginform"></div>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">login</button>
+        </div>
+
+    </form>
+    <div class="redirect-text">
+        <p>Don't have a Sky Health Account? <a href="{% url 'register' %}">Register</a>.</p>
+    </div>
+</body>
 
 </html>

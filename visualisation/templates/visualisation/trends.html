@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Global CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+    <!-- App-specific CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'visualisation/css/visualisation.css' %}">
+    <!-- Chart.js library for rendering chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Trends</title>
+</head>
+
+<body>
+    <!-- Mobile overlay for smaller screens -->
+    <div id="mobile-overlay">
+        <p>Please view this site on a desktop or tablet for the best experience.</p>
+    </div>
+
+    <nav>
+        <img src="{% static 'images/navbarlogo.png' %}" alt="Sky Health Check logo">
+        <ul>
+
+            <li><a href="{% url 'dashboard' %}">Home</a></li>
+            <li><a href="">My Survey</a></li>
+            <li class="active">
+                <img src="{% static 'images/activenav.png' %}" alt="Active navigation icon">
+                <a href="{% url 'visualisation' %}">Trends</a>
+            </li>
+            <li><a href="{% url 'account' %}">Account</a></li>
+        </ul>
+        <a href="{% url 'logout' %}" class="logout-link">
+            <img src="{% static 'images/signout.png' %}" alt="Sign out">
+            <p>Sign out</p>
+        </a>
+    </nav>
+
+    <main class="trends-page">
+        <h1 id="trends-heading" class="trends-title">Trends</h1>
+        <!-- Sidebar holding filter controls -->
+        <aside class="filters">
+            <!-- Form to submit filter parameters via GET -->
+            <form id="trends-filters" method="get">
+                <fieldset>
+                    <legend>Filters</legend>
+
+                    <div class="filter-group">
+                        <label>
+                            <input type="radio" name="scope" value="individual" checked>
+                            Individual
+                        </label>
+                        <label>
+                            <input type="radio" name="scope" value="team">
+                            Team
+                        </label>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category">
+                            <option value="" disabled selected>Select category</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="start-quarter">Starting Quarter</label>
+                        <select id="start-quarter" name="start_quarter">
+                            <option value="" disabled selected>Select start</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="end-quarter">Ending Quarter</label>
+                        <select id="end-quarter" name="end_quarter">
+                            <option value="" disabled selected>Select end</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <button type="submit" id="apply-filters">Apply Filters</button>
+                    </div>
+                </fieldset>
+            </form>
+        </aside>
+
+        <!-- Main content area for the trends chart -->
+        <!-- TODO: Add CSS to size chart container dynamically. -->
+        <section class="chart-container">
+            <canvas id="trends-chart"></canvas>
+            <!-- Chart will be rendered here by Eeliya -->
+        </section>
+    </main>
+</body>
+
+</html>
