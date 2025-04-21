@@ -21,6 +21,8 @@ main.trends-page {
 
 /* Sidebar filter panel with fixed width and auto-scroll */
 aside.filters {
+    display: flex;
+    flex-direction: column;
     flex: 0 0 260px;
     background: #fff;
     border: 1px solid #dcdfe3;
@@ -45,10 +47,22 @@ section.chart-container {
 
 /* Filter form elements styling */
 aside.filters fieldset {
+    display: flex;              /* enable flex layout inside the fieldset */
+    flex-direction: column;     /* stack children vertically */
+    flex: 1;
+    box-sizing: border-box;
+    margin: 0;
     border: 1px solid #dcdfe3;
     border-radius: 6px;
     padding: 1rem 1.5rem;
   }
+
+/* filter form fills sidebar and allows its fieldset to grow */
+aside.filters > form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
 aside.filters legend {
     font-size: 1.5rem;
@@ -90,6 +104,11 @@ aside.filters legend {
   cursor: pointer;
   font-size: 1rem;
   transition: background 0.2s ease;
+}
+/* Push the Apply Filters button container to the bottom of the fieldset */
+aside.filters fieldset .filter-group:last-child {
+  margin-top: auto;
+  align-self: center;
 }
 
 #apply-filters:hover {
