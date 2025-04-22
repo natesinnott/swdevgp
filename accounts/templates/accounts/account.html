@@ -4,17 +4,22 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'accounts/account.css' %}">
-    <script src="{% static 'javascripts/datetime.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/account.css' %}">
     <title>My Account</title>
     <link rel="icon" href="{% static 'images/tablogo.png' %}" type="image/png">
 </head>
 
 <body>
+    <div id="mobile-overlay">
+        <p>Please view this site on a desktop or tablet for the best experience.</p>
+    </div>
     <div class="welcome">
         <h2>Hello, {{ request.user.first_name }}</h2>
     </div>
-    <div id="datetime"></div>
+    <div id="datetime">
+        {% now "D j M H:i" %}
+    </div>
+    <script src="{% static 'javascripts/datetime.js' %}"></script>
 
     <nav>
         <img src="{% static 'images/navbarlogo.png' %}">
@@ -23,6 +28,7 @@
             <li><a href="{% url 'dashboard' %}">Home</a></li>
             <li><a href="{% url 'voting_survey' %}">My Survey</a></li>
             <li><a href="">Trends</a></li>
+            <li><a href="{% url 'visualisation' %}">Trends</a></li>
             <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="{% url 'account' %}">Account</a>
             </li>
         </ul>
@@ -39,7 +45,7 @@
         <div class="profile-details">
             <!-- The profile picture -->
             <div class="profile-icon">
-                <img src="{% static 'images/ProfileIcon.png' %}">
+                <img src="{% static 'accounts/images/ProfileIcon.png' %}">
             </div>
             <!-- The full name of the User -->
             <div class="profile-name">
@@ -59,24 +65,24 @@
             <div class="profile-info-row-1">
                 <!-- The username of the user -->
                 <div class="profile-username">
-                    <img src="{% static 'images/Icon-1.png' %}">
+                    <img src="{% static 'accounts/images/Icon-1.png' %}">
                     <p>skyJohnD04</p>
                 </div>
                 <!-- The ID of the user -->
                 <div class="profile-id">
-                    <img src="{% static 'images/Icon-2.png' %}">
+                    <img src="{% static 'accounts/images/Icon-2.png' %}">
                     <p>Sky-73129434</p>
                 </div>
             </div>
             <div class="profile-info-row-2">
                 <!-- The email address of the user -->
                 <div class="profile-email">
-                    <img src="{% static 'images/Icon-3.png' %}">
+                    <img src="{% static 'accounts/images/Icon-3.png' %}">
                     <p>j.doe@sky.co.uk</p>
                 </div>
                 <!-- The team of the user -->
                 <div class="profile-team">
-                    <img src="{% static 'images/Icon-4.png' %}">
+                    <img src="{% static 'accounts/images/Icon-4.png' %}">
                     <p>AlphaB21</p>
                 </div>
             </div>
