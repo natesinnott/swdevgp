@@ -1,0 +1,169 @@
+.surveyform{
+    height: 75vh;
+    width: auto;
+    margin-left: 250px;
+    margin-right: 20px;
+    margin-top: 150px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    min-width: 1124px;
+    overflow: auto;
+   
+}
+.close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.splash{
+    background-color: white;
+    height: 100%;
+    width: 67%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: auto;
+}
+.splash li{ 
+    margin-bottom: 10px;
+    font-size: clamp(14px, 1.5vw, 64px);
+    color: #919191;
+    
+}
+.splash ol{
+    margin-right: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.splash li.imageGuide{
+    list-style: none;
+    padding: 0;
+}
+.imageGuide img{
+    width: 700px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.archives{
+    background-color: white;
+    height: 100%;
+    width: 33%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: auto;
+}
+form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.terms-label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-family: 'SkyMedium';
+    color: #555;
+    gap: 8px;
+    margin-left: 40px;
+    margin-right: 60px;
+
+}
+
+input[type="checkbox"] {
+    transform: scale(2.5); 
+    border: 2px solid #555;
+    margin-right: 10px;
+}
+
+button[type="submit"] {
+    font-family: 'SkyRegular';
+    height: 60px;
+    width: 450px;
+    font-size: 20px;
+    margin-right: 40px;
+    background-color: #6e6e6e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #000000;
+}
+
+.archives ul{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.archives li{
+    margin-bottom: 10px;
+    font-size: clamp(16px, 2.5vw, 26px);
+    list-style-type:none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.archives img{
+    height: auto;
+    width: 50px;
+    float: left;
+}
+
+.dashed-line {
+    border-left: 3px dashed #c2c2c2;
+    height: 100%; 
+    margin-left: 25px;
+    position: relative; 
+    top: 0;
+}
+
+.pink{
+    color:#f5296d;
+}
+
+.blue{
+    color:#4b50fc;
+}
+
+h3{
+    font-family: 'SkyMedium';
+    color: #919191;
+    font-size: 35px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+
+@media (max-width: 991px) {
+    .surveyform {
+        display: none;
+    }
+    .screen-too-small {
+        display: flex;
+    }
+}

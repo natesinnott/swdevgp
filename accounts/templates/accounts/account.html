@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/account.css' %}">
     <title>My Account</title>
+    <link rel="icon" href="{% static 'images/tablogo.png' %}" type="image/png">
 </head>
 
 <body>
@@ -25,7 +26,7 @@
         <ul>
 
             <li><a href="{% url 'dashboard' %}">Home</a></li>
-            <li><a href="">My Survey</a></li>
+            <li><a href="{% url 'voting_survey' %}">My Survey</a></li>
             <li><a href="{% url 'visualisation' %}">Trends</a></li>
             <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="{% url 'account' %}">Account</a>
             </li>
