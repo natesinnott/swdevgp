@@ -136,12 +136,12 @@ nav li a:hover {
   }
   
   @media (max-width: 1024px) {
-    /* 1) hide everything except our overlay */
+    /* hide everything except our overlay */
     body > *:not(#mobile-overlay) {
       display: none !important;
     }
   
-    /* 2) show & style the overlay to fill the viewport */
+    /* show & style the overlay to fill the viewport */
     #mobile-overlay {
       display: flex;
       position: fixed;
@@ -154,7 +154,7 @@ nav li a:hover {
       text-align: center;
     }
   
-    /* 3) style the message */
+    /* style the message */
     #mobile-overlay p {
       font-size: 1.2rem;
       color: #333;

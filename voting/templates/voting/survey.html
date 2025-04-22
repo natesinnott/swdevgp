@@ -23,7 +23,7 @@
         
         <li><a href="{% url 'dashboard' %}">Home</a></li>
         <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="{% url 'voting_survey' %}">My Survey</a></li>
-        <li><a href="">Trends</a></li>
+        <li><a href="{% url 'visualisation' %}">Trends</a></li>
         <li><a href="{% url 'account' %}">Account</a></li>
     </ul>
     <a href="{% url 'logout' %}" class="logout-link">
