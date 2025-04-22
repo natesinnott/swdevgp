@@ -48,11 +48,11 @@
             </div>
             <!-- The full name of the User -->
             <div class="profile-name">
-                <p><strong> John Doe</strong></p>
+                <p><strong>{{ request.user.first_name }} {{ request.user.last_name }}</strong></p>
             </div>
             <!-- The role of the user -->
             <div class="profile-role">
-                <p><strong>Senior iOS Engineer</strong></p>
+                <p><strong>{{ request.user.job_role }}</strong></p>
             </div>
             <!-- The button the user presses to take them to the form page -->
             <div button class="edit-profile-button">
@@ -65,24 +65,24 @@
                 <!-- The username of the user -->
                 <div class="profile-username">
                     <img src="{% static 'accounts/images/Icon-1.png' %}">
-                    <p>skyJohnD04</p>
+                    <p>{{ request.user.username }}</p>
                 </div>
                 <!-- The ID of the user -->
                 <div class="profile-id">
                     <img src="{% static 'accounts/images/Icon-2.png' %}">
-                    <p>Sky-73129434</p>
+                    <p>{{ request.user.id }}</p>
                 </div>
             </div>
             <div class="profile-info-row-2">
                 <!-- The email address of the user -->
                 <div class="profile-email">
                     <img src="{% static 'accounts/images/Icon-3.png' %}">
-                    <p>j.doe@sky.co.uk</p>
+                    <p>{{ request.user.email }}</p>
                 </div>
                 <!-- The team of the user -->
                 <div class="profile-team">
                     <img src="{% static 'accounts/images/Icon-4.png' %}">
-                    <p>AlphaB21</p>
+                    <p>{{ request.user.team }}</p>
                 </div>
             </div>
         </div>

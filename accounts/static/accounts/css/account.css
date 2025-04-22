@@ -1,146 +1,145 @@
 .white-box {
+    position: relative;
     background-color: rgb(255, 255, 255);
-    width: 79%;
-    height: 85%;
-    margin: 10% 0% 0% 15%; 
-    padding: 0.05% 1%; 
+    width: 75vw;
+    height: 80vh;
+    margin: 17vh 15vw auto;
+    padding: 2vw;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 .white-box p {
+    position: relative;
     text-align: left;
-    font-size: 50px;
+    font-size: 4vw;
     color: #919191;
-    margin: 10px 0;
+    margin: 1vh 0;
 }
 
 .profile-icon img {
-    clear: both;
-    width: 250px;
-    height: 250px;
+    position: relative;
+    width: 20vw;
+    height: auto;
     border-radius: 50%;
-    margin: 10px 20px 50px 10px;
+    margin: 2vh 2vw 5vh 2vw;
     float: left;
 }
 
 .profile-name p {
+    position: relative;
     display: block;
-    margin-top: 50px;
-    font-size: 70px;
+    margin-top: 5vh;
+    font-size: 6vw;
     color: #f5296d;
-    margin-bottom: 10px;
+    margin-bottom: 1vh;
     padding: 0;
+    text-align: left;
 }
 
-.profile-role p{
-    font-size: 40px;
+.profile-role p {
+    position: relative;
+    font-size: 4vw;
     color: #919191;
     margin: 0;
-    margin-bottom: 10px;
+    margin-bottom: 1vh;
     padding: 0;
+    text-align: left;
 }
 
 .edit-profile-button {
+    position: relative;
     background-color: #ffffff;
-    border: 4px solid #fd6843;
-    margin-top: 5px;
-    float: left;
+    border: 0.3vw solid #fd6843;
+    margin: 0 auto;
     display: inline-block;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 0.5vw;
+    float: left;
 }
 
 .edit-profile-button a {
-    padding: 15px;
+    position: relative;
+    padding: 2vw;
     color: #fd6843;
-    font-size: 15px;
+    font-size: 1.7vw;
     text-decoration: none;
 }
 
-.profile-username p {
-    display: block;
-    font-size: 50px;
-    color: #4b50fc;
-    margin: 150px 5px 5px 5px;
-    padding: 0;
-}
-
-.profile-id p {
-    display: block;
-    font-size: 50px;
-    color: #4b50fc;
-    margin: 5px;
-    padding: 0;
-}
-
-.profile-email p {
-    display: block;
-    font-size: 50px;
-    color: #4b50fc;
-    margin: 5px;
-    padding: 0;
-}
-
-.profile-team p {
-    display: block;
-    font-size: 50px;
-    color: #4b50fc;
-    margin: 5px;
-    padding: 0;
-}
-
 .profile-details-2 {
-    clear: both; 
+    position: relative;
+    clear: both;
+    margin-top: 5vh;
 }
 
-.profile-info-row-1 {
-    display: flex;
-    justify-content: flex-start; 
-    align-items: left; 
-    gap: 71px;
-    margin-bottom: 20px;
-}
-
+.profile-info-row-1,
 .profile-info-row-2 {
+    position: relative;
     display: flex;
-    justify-content: flex-start; 
-    align-items: left; 
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3vw;
+    margin-bottom: 2vh;
 }
 
 .profile-username,
 .profile-id,
 .profile-email,
 .profile-team {
-    flex: 0; 
-    display: flex; 
-    align-items: left; 
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    margin: 0;
 }
 
 .profile-username img,
 .profile-id img,
 .profile-email img,
 .profile-team img {
-    width: 60px;
-    height: 60px;
-    margin-right: 10px; 
+    position: relative;
+    width: 4vw;
+    height: 4vw;
+    margin: 0;
 }
 
 .profile-username p,
 .profile-id p,
 .profile-email p,
 .profile-team p {
-    font-size: 60px;
+    position: relative;
+    font-size: 3vw;
     color: #4b50fc;
-    margin: 0; 
+    margin: 0;
     padding: 0;
 }
 
-.profile-id {
-    flex: 1;
+.profile-info-row-1,
+.profile-info-row-2 {
+    align-items: center;
+}
+
+.profile-details-2 {
+    position: relative;
+    clear: both;
+    margin-top: 5vh;
 }
 
 .profile-username,
 .profile-email {
-    margin-right: 50px;
+    position: relative;
+    display: flex;
+    align-items: center; 
+    gap: 1vw; 
+    flex: 1; 
+    margin: 0;
+}
+
+.profile-id,
+.profile-team {
+    position: relative;
+    display: flex;
+    align-items: center; 
+    flex: 1; 
+    margin: 0;
 }
