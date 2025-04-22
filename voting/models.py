@@ -41,7 +41,7 @@ class SurveyResponse(models.Model):
         db_table = 'SurveyResponse'
 
     def __str__(self):
-        return (str(self.quarter) + str(self.year) + "by" + self.employee.first_name + " " + self.employee.last_name)
+        return (str(self.quarter) + str(self.year) + "by" + self.employee.firstName + " " + self.employee.lastName)
     
 class SurveyDetail(models.Model):
     id = models.AutoField(primary_key=True)
