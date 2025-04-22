@@ -22,7 +22,7 @@
     <ul>
         
         <li><a href="{% url 'dashboard' %}">Home</a></li>
-        <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="">My Survey</a></li>
+        <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="{% url 'voting_survey' %}">My Survey</a></li>
         <li><a href="">Trends</a></li>
         <li><a href="{% url 'account' %}">Account</a></li>
     </ul>
@@ -42,17 +42,28 @@
         <li>Press next to proceed to the next category. Once all categories have been completed, press submit to complete submission</li>
         <li class="imageGuide"><img src="{% static 'images/statusguide.png' %}"></li>
     </ol>
-    <form action="" method="post">
+    <form action="{% url 'voting_newsurvey' %}" method="post">
         {% csrf_token %}
         <label class="terms-label">
             <input type="checkbox" name="terms" required>
             I agree to answer all the questions honestly. I agree to all the terms and conditions.
         </label>
         <br>
-        <button type="submit">Health Check</button>
+        <button type="submit">Take Health Check</button>
     </form>
 </div>
-<div class="archives"></div>
+<div class="archives">
+    <h3>My Submissions</h3>
+    <ul>
+        <li class="blue"><img src="{% static 'images/bluetimeline.png' %}">20th April 2025</li>
+        <li class="dashed-line"></li>
+        <li class="pink"><img src="{% static 'images/pinktimeline.png' %}">5th March 2025</li>
+        <li class="dashed-line"></li>
+        <li class="blue"><img src="{% static 'images/bluetimeline.png' %}">12th November 2024</li>
+        <li class="dashed-line"></li>
+        <li class="pink"><img src="{% static 'images/pinktimeline.png' %}">21st July 2024</li>
+    </ul>
+</div>
 </div>
 </div>
 <div class="screen-too-small">

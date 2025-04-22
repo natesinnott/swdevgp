@@ -1,0 +1,273 @@
+.logo img {
+    width: 520px; 
+    margin: 20px auto;
+    display: block;
+}
+
+.card {
+    padding-top: 10px;
+    width: auto;
+    height: 80vh;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    overflow: auto;
+    gap: 20px;
+    min-width: 1200px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.titleAndStates{
+    position: relative;
+    height: 97%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: auto;
+    justify-content: space-evenly;
+}
+
+.commentsbox{
+    position: relative;
+    height: 97%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: auto;
+}
+
+h3{
+    font-family: 'SkyMedium';
+    font-size: 32px;
+    display: block;
+    margin: 10px auto;
+}
+h4{
+    display: block;
+    margin: 0px auto;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+
+.rating input[type="radio"] + label {
+    display: block;
+    font-family: 'SkyRegular';
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f0f0f0; 
+    color: rgb(108, 108, 108);
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    border: 1px solid transparent; 
+    width: 700px;
+    height: 50px;
+    margin: 0;
+    border-radius: 15px;
+}
+
+
+.rating input[type="radio"]#good + label {
+    background-color: #d9f2e3; 
+    
+}
+
+.rating input[type="radio"]#average + label {
+    background-color: #fff3cd; 
+
+}
+
+.rating input[type="radio"]#bad + label {
+    background-color: #f8d7da; 
+}
+
+.rating input[type="radio"]#good:checked + label {
+    font-family: 'SkyMedium';
+    background-color: #006d26; 
+    color: white;
+    border: 5px solid black; 
+}
+
+.rating input[type="radio"]#average:checked + label {
+    font-family: 'SkyMedium';
+    background-color: #d4a200; 
+    color: white;
+    border: 5px solid black; 
+
+}
+
+.rating input[type="radio"]#bad:checked + label {
+    font-family: 'SkyMedium';
+    background-color: #a9000e; 
+    color: white;
+    border: 5px solid black; 
+}
+
+
+.rating {
+    font-size: 18px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex: 1;
+    width: 100%;
+}
+
+.rating .icon {
+    border-radius: 15px;
+    height: auto;
+    width: 60px;
+    float: left;
+    margin-right: 20px;
+    border: 2px solid transparent;
+    opacity: 0.5;
+}
+
+.rating input[type="radio"]:checked + label .icon {
+    border: 2px solid black;
+    opacity: 1;
+}
+
+.extraRatings input[type="radio"]:checked + .option label {
+    font-family: 'SkyMedium';
+    color: white;
+}
+textarea {
+    min-height: 300px;
+    margin: 10px auto;
+    display: block;
+    width: 90%;
+    height: 70%;
+    padding-top: 10px;
+    resize: none;
+    border-radius: 15px;
+}
+
+.extraRatings {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.extraRatings input[type="radio"] + label {
+    
+    font-family: 'SkyRegular';
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: rgb(108, 108, 108);
+    cursor: pointer;
+
+}
+
+.extraRatings .option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    width: 100px;
+    opacity: 0.5;
+    text-align: center;
+}
+
+.extraRating .option img{
+    opacity: 0.5;
+}
+.extraRatings img {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    display: block;
+}
+
+.extraRatings label {
+    font-family: 'SkyRegular';
+    font-size: 18px;
+    color: rgb(108, 108, 108);
+    cursor: pointer;
+}
+
+.extraRatings strong{
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}
+
+.extraRatings input#improve + .option{
+    background-color: #d9f2e3; 
+
+}
+.extraRatings input#same + .option{
+    background-color: #fff3cd;
+}
+.extraRatings input#worse + .option {
+    background-color: #f8d7da; 
+}
+.extraRatings input[type="radio"]#improve:checked + .option {
+    background-color: #006d26;
+}
+
+.extraRatings input[type="radio"]#same:checked + .option {
+    background-color: #d4a200;
+}
+
+.extraRatings input[type="radio"]#worse:checked + .option {
+    background-color: #a9000e;
+}
+
+
+
+.extraRatings input[type="radio"]:checked + .option img {
+    opacity: 1;
+    filter: brightness(0) invert(1); 
+}
+.extraRatings input[type="radio"]:checked + .option {
+    border: 3px solid black;
+    opacity: 1;
+}
+
+button{
+    width: 60%;
+    margin: 5px auto;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.next {
+    background-color: blue;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.next:hover {
+    background-color: darkblue; 
+}
+
+.previous{
+    transition: background-color 0.3s ease; 
+    background-color: #c0c0c0;
+}
+
+.previous:hover{
+    background-color: rgb(111, 111, 111);
+    color: white;
+}
+
+

@@ -1,0 +1,85 @@
+{% load static %}
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'voting/session.css' %}">
+    <title>New Survey</title>
+    <link rel="icon" href="{% static 'images/tablogo.png' %}" type="image/png">
+</head>
+
+<body>
+    
+    <a class=logo href="{% url 'voting_survey' %}"><img src="{% static 'images/healthlogo.png' %}"></a>
+    <form>
+    <div class=card>
+        <div class="titleAndStates">
+            
+            <h3>  Health of Codebase  </h3>
+            <h4>( 1 / 20 )</h4>
+            
+            <div class="rating good">
+                <input type="radio" id="good" name="health" value="good" required>
+                <label for="good">
+                    <img class="icon" src="{% static 'images/check.png' %}">
+                    <strong>Our codebase is clean, well-structured, and easy to work with. It’s a solid foundation that supports fast, reliable development!</strong>
+                </label>
+            </div>
+            
+            <div class="rating average">
+                <input type="radio" id="average" name="health" value="average" required>
+                <label for="average">
+                    <img class="icon" src="{% static 'images/equal.png' %}">
+                    <strong>The code works, but the technical debt is creeping in. We may need to refactor and test more of the code to avoid future issues.</strong>
+                </label>
+            </div>
+            
+            <div class="rating bad">
+                <input type="radio" id="bad" name="health" value="bad" required>
+                <label for="bad">
+                    <img class="icon" src="{% static 'images/cross.png' %}">
+                    <strong>The codebase is messy and hard to work with. Bugs are common, and technical debt makes development slow and painful.</strong>
+                </label>
+            </div>
+
+            <div class="extraRatings">
+                <input type="radio" id="improve" name="trend" value="Improving" required>
+                <div class="option">
+                    <label for="improve">
+                        <img src="{% static 'images/up.png' %}">
+                        <strong>Improving</strong>
+                    </label>
+                </div>
+
+                <input type="radio" id="same" name="trend" value="Stable" required>
+                <div class="option">
+                    <label for="same">
+                        <img src="{% static 'images/same.png' %}">
+                        <strong>Stable</strong>
+                    </label>
+                </div>
+
+                <input type="radio" id="worse" name="trend" value="Worsening" required>
+                <div class="option">
+                    <label for="worse">
+                        <img src="{% static 'images/down.png' %}">
+                        <strong>Worsening</strong>
+                    </label>
+                </div>
+            </div>
+            
+        </div>
+    
+        <div class="commentsbox">
+            <h3>Additional Comments:</h3>
+            <textarea name="comments" rows="1" placeholder="Write additional comments here"></textarea>
+            <button class="next" type="submit">Next</button>
+            <button class="previous" type="submit">Previous</button>
+        </div>
+    
+
+    </div>
+</form>
+</body>
+
+</html>
