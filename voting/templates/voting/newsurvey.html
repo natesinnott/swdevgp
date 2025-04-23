@@ -102,11 +102,18 @@
                 }
                 if (nextBtn) {
                     nextBtn.addEventListener('click', () => {
-                        // validate required inputs in this card
-                        const inputs = card.querySelectorAll('input[required]');
-                        for (let input of inputs) {
-                            if (!input.value) {
-                                input.reportValidity();
+                        // Validate each required radio group
+                        const radioNames = new Set();
+                        card.querySelectorAll('input[type="radio"][required]').forEach(radio => {
+                            radioNames.add(radio.name);
+                        });
+                        for (let name of radioNames) {
+                            const checked = card.querySelector(`input[name="${name}"]:checked`);
+                            if (!checked) {
+                                // find the first radio to report validity
+                                const firstRadio = card.querySelector(`input[name="${name}"]`);
+                                firstRadio.focus();
+                                alert('Please ensure you have selected an option for all questions.');
                                 return;
                             }
                         }
