@@ -94,7 +94,14 @@ aside.filters legend {
     background: #fff;
     font-size: 0.95rem;
   }
-
+.filter-group input[type=date] {
+  width: 92%;
+  padding: 0.5rem;
+  border: 1px solid #dcdfe3;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 0.95rem;
+}
 
 /* Filters button styling */
 #apply-filters {
