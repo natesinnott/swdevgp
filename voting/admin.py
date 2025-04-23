@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question, Survey, SurveyResponse, SurveyDetail, SurveyResponseDetail
+from .models import Question, Survey, SurveyResponse, SurveyDetail, SurveyResponseDetail, Session
 
 # Register your models here.
 
@@ -21,11 +21,17 @@ class SurveyDetailAdmin(admin.ModelAdmin):
     list_display = ('id', 'survey', 'question')
     search_fields = ('survey__survey_title', 'question__question_title')
 
+@admin.register(Session)
+class SessionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'survey', 'start_date', 'end_date', 'is_active')
+    search_fields = ('survey__survey_title',)
+    list_filter = ('start_date', 'end_date')
+
 @admin.register(SurveyResponse)
 class SurveyResponseAdmin(admin.ModelAdmin):
-    list_display = ('id', 'employee', 'survey', 'quarter', 'year')
+    list_display = ('id', 'employee', 'survey', 'session')
     search_fields = ('employee__first_name', 'employee__last_name', 'survey__survey_title')
-    list_filter = ('year', 'quarter')
+    list_filter = ('session',)
 
 @admin.register(SurveyResponseDetail)
 class SurveyResponseDetailAdmin(admin.ModelAdmin):
