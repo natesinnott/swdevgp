@@ -126,4 +126,4 @@ def voting_submit(request):
         )
 
     messages.success(request, "Thank you for completing the Health Check!")
-    return redirect('voting_survey')
+    return render(request, 'voting/survey_complete.html')
