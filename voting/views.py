@@ -13,7 +13,7 @@ def survey(request):
     try:
         employee = Employee.objects.get(user=request.user)
     except Employee.DoesNotExist:
-        return redirect('voting_survey')
+        return redirect('dashboard')
 
     sessions_qs = Session.objects.filter(
         start_date__lte=now,
