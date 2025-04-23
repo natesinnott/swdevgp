@@ -156,14 +156,25 @@ h3{
     margin-bottom: 10px;
 }
 
+/* Info and error message styles */
+.info-message,
+.error-message {
+    padding: 12px 20px;
+    margin: 20px auto;
+    border-radius: 4px;
+    font-size: 16px;
+}
 
+/* Light blue background with blue text for informational messages */
+.info-message {
+    background-color: #e5f0ff;
+    color: #4b50fc;
+    border: 1px solid #4b50fc;
+}
 
-
-@media (max-width: 991px) {
-    .surveyform {
-        display: none;
-    }
-    .screen-too-small {
-        display: flex;
-    }
+/* Light pink background with pink/red text for error messages */
+.error-message {
+    background-color: #ffe5ee;
+    color: #f5296d;
+    border: 1px solid #f5296d;
 }
