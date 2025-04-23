@@ -4,7 +4,6 @@
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'voting/splash.css' %}">
-    <script src="{% static 'javascripts/datetime.js' %}"></script>
     <title>My Survey</title>
     <link rel="icon" href="{% static 'images/tablogo.png' %}" type="image/png">
 
@@ -19,8 +18,10 @@
 <div class="welcome">
     <h2>Hello, {{ request.user.first_name }}</h2>
 </div>
-<div id="datetime"></div>
-
+<div id="datetime">
+    {% now "D j M H:i" %}
+</div>
+<script src="{% static 'javascripts/datetime.js' %}"></script>
 
 <nav>
     <img src="{% static 'images/navbarlogo.png' %}">
