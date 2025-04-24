@@ -11,7 +11,6 @@ from .models import Employee
 
 @login_required
 def trends(request):
-    
     try:
         employee = Employee.objects.filter(user__username=request.user.username).first()
     except Employee.DoesNotExist:
