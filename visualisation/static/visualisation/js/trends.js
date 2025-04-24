@@ -10,6 +10,8 @@ function fetchChartData() {
         end_date: document.getElementById("end-date").value,
     };
 
+    var chartType = document.querySelector('input[name="chartType"]:checked').value;
+
     $.get('/trends/data/', filters, function (response) {
 
         console.log("Fetching with filters:", filters);
@@ -26,28 +28,30 @@ function fetchChartData() {
             var categoryLabel = filters.category || "All Categories";
             var chartTitle = `${categoryLabel} - ${filters.type.charAt(0).toUpperCase() + filters.type.slice(1)} Chart`;
 
-
             currentChart = new Chart(ctx, {
-                type: 'line',
+                type: chartType,
                 data: {
                     labels: response.dates,
                     datasets: [{
                         label: 'Green',
                         data: response.green,
                         borderColor: 'rgba(0, 200, 83, 1)',
-                        backgroundColor: 'rgba(0, 200, 83, 0.2)',
+                        backgroundColor: 'rgba(0, 150, 60, 0.6)',
+                        hoverBackgroundColor: 'rgba(0, 200, 83, 1)',
                         fill: false
                     }, {
                         label: 'Amber',
                         data: response.amber,
                         borderColor: 'rgba(255, 193, 7, 1)',
-                        backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                        backgroundColor: 'rgba(204, 153, 5, 0.6)',
+                        hoverBackgroundColor: 'rgba(255, 193, 7, 1)',
                         fill: false
                     }, {
                         label: 'Red',
                         data: response.red,
                         borderColor: 'rgba(244, 67, 54, 1)',
-                        backgroundColor: 'rgba(244, 67, 54, 0.2)',
+                        backgroundColor: 'rgba(200, 50, 40, 0.6)',
+                        hoverBackgroundColor: 'rgba(244, 67, 54, 1)',
                         fill: false
                     }]
                 },
@@ -82,4 +86,9 @@ document.getElementById('trends-filters').addEventListener('submit', function (e
 });
 
 
+
 document.addEventListener('DOMContentLoaded', fetchChartData);
+
+document.querySelectorAll('input[name="chartType"]').forEach(function (input) {
+    input.addEventListener('change', fetchChartData);
+});

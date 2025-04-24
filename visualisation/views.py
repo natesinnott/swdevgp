@@ -58,7 +58,6 @@ def trends_data(request):
             data = [
                 row for row in all_data
                 if start_date_parsed <= row.response.session.start_date.date() <= end_date_parsed
-                and start_date_parsed <= row.response.session.end_date.date() <= end_date_parsed
             ]
         except Exception as e:
             return JsonResponse({"error": f"Date filtering error: {str(e)}"}, status=400)
