@@ -9,77 +9,125 @@
 </head>
 
 <body>
-    
+
     <a class=logo href="{% url 'voting_survey' %}"><img src="{% static 'images/healthlogo.png' %}"></a>
-    <form>
-    <div class=card>
-        <div class="titleAndStates">
-            
-            <h3>  Health of Codebase  </h3>
-            <h4>( 1 / 20 )</h4>
-            
-            <div class="rating good">
-                <input type="radio" id="good" name="health" value="good" required>
-                <label for="good">
-                    <img class="icon" src="{% static 'images/check.png' %}">
-                    <strong>Our codebase is clean, well-structured, and easy to work with. It’s a solid foundation that supports fast, reliable development!</strong>
-                </label>
-            </div>
-            
-            <div class="rating average">
-                <input type="radio" id="average" name="health" value="average" required>
-                <label for="average">
-                    <img class="icon" src="{% static 'images/equal.png' %}">
-                    <strong>The code works, but the technical debt is creeping in. We may need to refactor and test more of the code to avoid future issues.</strong>
-                </label>
-            </div>
-            
-            <div class="rating bad">
-                <input type="radio" id="bad" name="health" value="bad" required>
-                <label for="bad">
-                    <img class="icon" src="{% static 'images/cross.png' %}">
-                    <strong>The codebase is messy and hard to work with. Bugs are common, and technical debt makes development slow and painful.</strong>
-                </label>
-            </div>
+    <form id="survey-form" method="post" action="{% url 'voting_submit' %}">
+        {% csrf_token %}
+        {% for question in questions %}
+        <div class="card question-card{% if not forloop.first %} hidden{% endif %}" data-index="{{ forloop.counter0 }}">
+            <div class="titleAndStates">
 
-            <div class="extraRatings">
-                <input type="radio" id="improve" name="trend" value="Improving" required>
-                <div class="option">
-                    <label for="improve">
-                        <img src="{% static 'images/up.png' %}">
+                <h3>{{ question.question_title }}</h3>
+                <h4>({{ forloop.counter }} / {{ questions|length }})</h4>
+
+                <div class="rating good">
+                    <input type="radio" id="health-green-{{ question.id }}" name="health-{{ question.id }}" value="green"
+                        required>
+                    <label for="health-green-{{ question.id }}">
+                        <img class="icon" src="{% static 'images/check.png' %}">
+                        <strong>{{ question.green_desc }}</strong>
+                    </label>
+                </div>
+
+                <div class="rating average">
+                    <input type="radio" id="health-amber-{{ question.id }}" name="health-{{ question.id }}"
+                        value="amber" required>
+                    <label for="health-amber-{{ question.id }}">
+                        <img class="icon" src="{% static 'images/equal.png' %}">
+                        <strong>{{ question.amber_desc }}</strong>
+                    </label>
+                </div>
+
+                <div class="rating bad">
+                    <input type="radio" id="health-red-{{ question.id }}" name="health-{{ question.id }}" value="red"
+                        required>
+                    <label for="health-red-{{ question.id }}">
+                        <img class="icon" src="{% static 'images/cross.png' %}">
+                        <strong>{{ question.red_desc }}</strong>
+                    </label>
+                </div>
+
+                <div class="extraRatings">
+                    <input type="radio" class="opt-improve" id="trend-improving-{{ question.id }}" name="trend-{{ question.id }}" value="improving" required>
+                    <div class="option">
+                      <label for="trend-improving-{{ question.id }}">
+                        <img src="{% static 'images/up.png' %}" alt="Improving">
                         <strong>Improving</strong>
-                    </label>
-                </div>
+                      </label>
+                    </div>
 
-                <input type="radio" id="same" name="trend" value="Stable" required>
-                <div class="option">
-                    <label for="same">
-                        <img src="{% static 'images/same.png' %}">
+                    <input type="radio" class="opt-same" id="trend-stable-{{ question.id }}" name="trend-{{ question.id }}" value="stable" required>
+                    <div class="option">
+                      <label for="trend-stable-{{ question.id }}">
+                        <img src="{% static 'images/same.png' %}" alt="Stable">
                         <strong>Stable</strong>
-                    </label>
-                </div>
+                      </label>
+                    </div>
 
-                <input type="radio" id="worse" name="trend" value="Worsening" required>
-                <div class="option">
-                    <label for="worse">
-                        <img src="{% static 'images/down.png' %}">
+                    <input type="radio" class="opt-worse" id="trend-getting-worse-{{ question.id }}" name="trend-{{ question.id }}" value="getting worse" required>
+                    <div class="option">
+                      <label for="trend-getting-worse-{{ question.id }}">
+                        <img src="{% static 'images/down.png' %}" alt="Worsening">
                         <strong>Worsening</strong>
-                    </label>
+                      </label>
+                    </div>
                 </div>
-            </div>
-            
-        </div>
-    
-        <div class="commentsbox">
-            <h3>Additional Comments:</h3>
-            <textarea name="comments" rows="1" placeholder="Write additional comments here"></textarea>
-            <button class="next" type="submit">Next</button>
-            <button class="previous" type="submit">Previous</button>
-        </div>
-    
 
-    </div>
-</form>
+            </div>
+
+            <div class="commentsbox">
+                <h3>Additional Comments:</h3>
+                <textarea name="comments-{{ question.id }}" rows="1"
+                    placeholder="Write additional comments here"></textarea>
+                <button type="button" class="previous" {% if forloop.first %}disabled{% endif %}>Previous</button>
+                <button type="button" class="next">{% if forloop.last %}Submit{% else %}Next{% endif %}</button>
+            </div>
+
+
+        </div>
+        {% endfor %}
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.question-card');
+            const form = document.getElementById('survey-form');
+            cards.forEach((card, idx) => {
+                const prevBtn = card.querySelector('.previous');
+                const nextBtn = card.querySelector('.next');
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        cards[idx].classList.add('hidden');
+                        cards[idx - 1].classList.remove('hidden');
+                    });
+                }
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        // Validate each required radio group
+                        const radioNames = new Set();
+                        card.querySelectorAll('input[type="radio"][required]').forEach(radio => {
+                            radioNames.add(radio.name);
+                        });
+                        for (let name of radioNames) {
+                            const checked = card.querySelector(`input[name="${name}"]:checked`);
+                            if (!checked) {
+                                // find the first radio to report validity
+                                const firstRadio = card.querySelector(`input[name="${name}"]`);
+                                firstRadio.focus();
+                                alert('Please ensure you have selected an option for all questions.');
+                                return;
+                            }
+                        }
+                        if (idx < cards.length - 1) {
+                            cards[idx].classList.add('hidden');
+                            cards[idx + 1].classList.remove('hidden');
+                        } else {
+                            form.submit();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
