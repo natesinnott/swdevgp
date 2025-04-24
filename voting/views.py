@@ -28,9 +28,16 @@ def survey(request):
             session=active_session
         ).exists()
 
+    # Retrieve 5 previous survey submission dates
+
+    archives = SurveyResponse.objects.filter(
+        employee=employee
+    ).order_by('-session__start_date')[:5]
+
     return render(request, 'voting/survey.html', {
         'has_active_session': has_active,
-        'has_taken': has_taken
+        'has_taken': has_taken,
+        'archives' : archives,
     })
 
 @login_required

@@ -41,7 +41,7 @@ class SurveyResponse(models.Model):
         unique_together = (('employee', 'session'),)
 
     def __str__(self):
-        return f"Response for {self.survey.survey_title} in session {self.session} by {self.employee.firstName} {self.employee.lastName}"
+        return f"Response in session {self.session} by {self.employee.firstName} {self.employee.lastName}"
     
 class SurveyDetail(models.Model):
     id = models.AutoField(primary_key=True)
