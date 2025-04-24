@@ -50,6 +50,8 @@
                 <fieldset>
                     <legend>Filters</legend>
 
+                    
+
                     <div class="filter-group">
                         <label>
                             <input type="radio" name="scope" value="individual" checked>
@@ -90,6 +92,10 @@
         <!-- Main content area for the trends chart -->
         <!-- TODO: Add CSS to size chart container dynamically. -->
         <section class="chart-container">
+            <div id="chart-type-toggle" style="text-align: right; margin-bottom: 10px;">
+                <label><input type="radio" name="chartType" value="line" checked> Line</label>
+                <label><input type="radio" name="chartType" value="bar"> Bar</label>
+            </div>
             <canvas id="trends-chart"></canvas>
             <!-- Chart will be rendered here by Eeliya done in trends.js-->
             <script src="{% static 'visualisation/js/trends.js' %}"></script>
