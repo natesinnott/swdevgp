@@ -5,7 +5,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/account.css' %}">
-    <title>My Account</title>
+    <title class="title">My Account</title>
     <link rel="icon" href="{% static 'images/tablogo.png' %}" type="image/png">
 </head>
 
@@ -42,45 +42,45 @@
         <p>My Account</p>
         <!-- The profile details, including the name, role, and button to edit account details -->
         <div class="profile-details">
-            <!-- The profile picture -->
             <div class="profile-icon">
                 <img src="{% static 'accounts/images/ProfileIcon.png' %}">
             </div>
-            <!-- The full name of the User -->
-            <div class="profile-name">
-                <p><strong>{{ request.user.first_name }} {{ request.user.last_name }}</strong></p>
-            </div>
-            <!-- The role of the user -->
-            <div class="profile-role">
-                <p><strong>{{ request.user.job_role }}</strong></p>
-            </div>
-            <!-- The button the user presses to take them to the form page -->
-            <div button class="edit-profile-button">
-                <a href=""><strong> Change Account Details </strong></a>
+            <!-- The profile meta information, including the name and role of the user -->
+            <div class="profile-meta">
+                <!-- The name of the user -->
+                <div class="profile-name">
+                    <p><strong>{{ request.user.first_name }} {{ request.user.last_name }}</strong></p>
+                </div>
+                <!-- The role of the user -->
+                <div class="profile-role">
+                    <p><strong>{{ request.user.job_role }}</strong></p>
+                </div>
+                <!-- The button that will navigate the user to edit their account details -->
+                <div class="edit-profile-button">
+                    <a href=""><strong>Change Profile Details</strong></a>
+                </div>
             </div>
         </div>
         <!-- The further profile details, including the username, ID, email address, and team name -->
         <div class="profile-details-2">
-            <div class="profile-info-row-1">
+            <div class="profile-info-grid">
                 <!-- The username of the user -->
-                <div class="profile-username">
+                <div class="profile-box profile-username">
                     <img src="{% static 'accounts/images/Icon-1.png' %}">
                     <p>{{ request.user.username }}</p>
                 </div>
-                <!-- The ID of the user -->
-                <div class="profile-id">
-                    <img src="{% static 'accounts/images/Icon-2.png' %}">
-                    <p>{{ request.user.id }}</p>
-                </div>
-            </div>
-            <div class="profile-info-row-2">
                 <!-- The email address of the user -->
-                <div class="profile-email">
+                <div class="profile-box profile-email">
                     <img src="{% static 'accounts/images/Icon-3.png' %}">
                     <p>{{ request.user.email }}</p>
                 </div>
+                <!-- The ID of the user -->
+                <div class="profile-box profile-id">
+                    <img src="{% static 'accounts/images/Icon-2.png' %}">
+                    <p>{{ request.user.id }}</p>
+                </div>
                 <!-- The team of the user -->
-                <div class="profile-team">
+                <div class="profile-box profile-team">
                     <img src="{% static 'accounts/images/Icon-4.png' %}">
                     <p>{{ request.user.team }}</p>
                 </div>
