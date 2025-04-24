@@ -1,48 +1,85 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const ctx = document.getElementById("trends-chart").getContext("2d");
-  
-    // TODO: read filter values from the DOM (category, quarters, scope)
-    const params = new URLSearchParams({
-      category:   "",
-      start_q:    "",
-      end_q:      "",
-      scope:      "individual",
+let currentChart = null;
+
+
+function fetchChartData() {
+
+    var filters = {
+        type: document.querySelector('input[name="scope"]:checked').value,
+        category: document.getElementById("category").value,
+        start_date: document.getElementById("start-date").value,
+        end_date: document.getElementById("end-date").value,
+    };
+
+    $.get('/trends/data/', filters, function (response) {
+
+        console.log("Fetching with filters:", filters);
+        console.log("Chart data response:", response);
+        if (response.dates) {
+
+            var ctx = document.getElementById('trends-chart').getContext('2d');
+
+            if (currentChart) {
+                currentChart.destroy();
+            }
+
+
+            var categoryLabel = filters.category || "All Categories";
+            var chartTitle = `${categoryLabel} - ${filters.type.charAt(0).toUpperCase() + filters.type.slice(1)} Chart`;
+
+
+            currentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: response.dates,
+                    datasets: [{
+                        label: 'Green',
+                        data: response.green,
+                        borderColor: 'rgba(0, 200, 83, 1)',
+                        backgroundColor: 'rgba(0, 200, 83, 0.2)',
+                        fill: false
+                    }, {
+                        label: 'Amber',
+                        data: response.amber,
+                        borderColor: 'rgba(255, 193, 7, 1)',
+                        backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                        fill: false
+                    }, {
+                        label: 'Red',
+                        data: response.red,
+                        borderColor: 'rgba(244, 67, 54, 1)',
+                        backgroundColor: 'rgba(244, 67, 54, 0.2)',
+                        fill: false
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: chartTitle,
+                            font: {
+                                size: 24,
+                                family: 'SkyRegular',
+                            },
+                            margin: {
+                                top:0,
+                                bottom: 70  
+                        }
+                    }
+                }
+            }});
+        } else {
+            alert("Error fetching data!");
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("Failed to fetch chart data:", textStatus, errorThrown);
+        alert("Something went wrong while loading the chart.");
     });
-  
-    // Fetch the data from Django
-    fetch(`/trends/data/?${params}`)
-      .then(res => res.json())
-      .then(json => {
-        // TODO: validate json contains {quarters, great, decent, terrible}
-        new Chart(ctx, {
-          type: "line",
-          data: {
-            labels: json.quarters,
-            datasets: [
-              {
-                label: "Great",
-                data: json.great,
-                borderColor: "green",      // styling can be overridden in CSS after logic implemented
-                fill: false,
-              },
-              {
-                label: "Decent",
-                data: json.decent,
-                borderColor: "orange",
-                fill: false,
-              },
-              {
-                label: "Terrible",
-                data: json.terrible,
-                borderColor: "red",
-                fill: false,
-              },
-            ]
-          },
-          options: {
-            // TODO: chart.js tweaks for display
-          }
-        });
-      })
-      .catch(err => console.error("Failed to load trend data:", err));
-  });
+}
+
+document.getElementById('trends-filters').addEventListener('submit', function (event) {
+    event.preventDefault();
+    fetchChartData();
+});
+
+
+document.addEventListener('DOMContentLoaded', fetchChartData);
