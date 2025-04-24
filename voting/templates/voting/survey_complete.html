@@ -1,0 +1,52 @@
+{% load static %}
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'voting/splash.css' %}">
+    <title>Health Check Complete</title>
+    <link rel="icon" href="{% static 'images/tablogo.png' %}" type="image/png">
+
+
+</head>
+<!-- Mobile overlay for smaller screens -->
+<div id="mobile-overlay">
+    <p>Please view this site on a desktop or tablet for the best experience.</p>
+</div>
+
+
+<div class="welcome">
+    <h2>Hello, {{ request.user.first_name }}</h2>
+</div>
+<div id="datetime">
+    {% now "D j M H:i" %}
+</div>
+<script src="{% static 'javascripts/datetime.js' %}"></script>
+
+
+<nav>
+    <img src="{% static 'images/navbarlogo.png' %}">
+    <ul>
+
+        <li><a href="{% url 'dashboard' %}">Home</a></li>
+        <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="{% url 'voting_survey' %}">My
+                Survey</a></li>
+        <li><a href="{% url 'visualisation' %}">Trends</a></li>
+        <li><a href="{% url 'account' %}">Account</a></li>
+    </ul>
+    <a href="{% url 'logout' %}" class="logout-link">
+        <img src="{% static 'images/signout.png' %}">
+        <p>Sign out</p>
+    </a>
+</nav>
+
+<div class="surveycomplete">
+    <h3>Health Check Complete</h3>
+    <p>Thank you for completing the health check. Your responses have been recorded.</p>
+    <form action="{% url 'dashboard' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="submit-button">Go to Dashboard</button>
+    </form>
+
+
+</html>

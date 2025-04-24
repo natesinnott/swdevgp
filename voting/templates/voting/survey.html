@@ -4,7 +4,6 @@
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'voting/splash.css' %}">
-    <script src="{% static 'javascripts/datetime.js' %}"></script>
     <title>My Survey</title>
     <link rel="icon" href="{% static 'images/tablogo.png' %}" type="image/png">
 
@@ -19,8 +18,10 @@
 <div class="welcome">
     <h2>Hello, {{ request.user.first_name }}</h2>
 </div>
-<div id="datetime"></div>
-
+<div id="datetime">
+    {% now "D j M H:i" %}
+</div>
+<script src="{% static 'javascripts/datetime.js' %}"></script>
 
 <nav>
     <img src="{% static 'images/navbarlogo.png' %}">
@@ -69,13 +70,22 @@
     <div class="archives">
         <h3>My Submissions</h3>
         <ul>
-            <li class="blue"><img src="{% static 'images/bluetimeline.png' %}">20th April 2025</li>
-            <li class="dashed-line"></li>
-            <li class="pink"><img src="{% static 'images/pinktimeline.png' %}">5th March 2025</li>
-            <li class="dashed-line"></li>
-            <li class="blue"><img src="{% static 'images/bluetimeline.png' %}">12th November 2024</li>
-            <li class="dashed-line"></li>
-            <li class="pink"><img src="{% static 'images/pinktimeline.png' %}">21st July 2024</li>
+            {% for resp in archives %}
+                {% if forloop.counter0|divisibleby:2 %}
+                    <li class="blue">
+                        <img src="{% static 'images/bluetimeline.png' %}">{{ resp.session.start_date|date:"jS F Y" }}
+                    </li>
+                {% else %}
+                    <li class="pink">
+                        <img src="{% static 'images/pinktimeline.png' %}">{{ resp.session.start_date|date:"jS F Y" }}
+                    </li>
+                {% endif %}
+                {% if not forloop.last %}
+                    <li class="dashed-line"></li>
+                {% endif %}
+            {% empty %}
+                    <li>No previous submission</li>
+            {% endfor %}
         </ul>
     </div>
 </div>
