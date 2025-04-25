@@ -69,6 +69,18 @@ function fetchChartData() {
                                 bottom: 70  
                         }
                     }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            callback: function(value) {
+                                if (Number.isInteger(value)) {
+                                    return value;
+                                }
+                                return '';
+                            }
+                        }
+                    }
                 }
             }});
         } else {
