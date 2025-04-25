@@ -3,24 +3,15 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
-    <script src="{% static 'javascripts/datetime.js' %}"></script>
-    <title>Hi, {{ request.user.first_name }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/dashboard.css' %}">
+    <title>Sky Health Check</title>
     <link rel="icon" href="{% static 'images/tablogo.png' %}" type="image/png">
-
 </head>
 
 <body>
     <div id="mobile-overlay">
         <p>Please view this site on a desktop or tablet for the best experience.</p>
     </div>
-    <div class="welcome">
-        <h2>Hello, {{ request.user.first_name }}</h2>
-    </div>
-    <div id="datetime">
-        {% now "D j M H:i" %}
-    </div>
-    <script src="{% static 'javascripts/datetime.js' %}"></script>
-
     <nav>
         <img src="{% static 'images/navbarlogo.png' %}">
         <ul>
@@ -35,6 +26,58 @@
             <p>Sign out</p>
         </a>
     </nav>
+    <div class="welcome">
+        <h2>Hello, {{ request.user.first_name }}</h2>
+    </div>
+    <div id="datetime">
+        {% now "D j M H:i" %}
+    </div>
+    <script src="{% static 'javascripts/datetime.js' %}"></script>
+    <main class="main-content">
+        <section class="card profile-card">
+            <div class="profile-icon">
+                <img src="{% static 'dashboard/images/profileicon.png' %}" alt="Profile Icon">
+            </div>
+            <div class="profile-info">
+                <h3>{{ request.user.first_name }} {{ request.user.last_name }}</h3>
+                <p>Senior iOS Engineer</p>
+                <p>{{ request.user.email }}</p>
+            </div>
+        </section>
+        <section class="card new-check-card">
+            <h3>New Health Check</h3>
+            <form action="{% url 'voting_survey' %}" method="post">
+                {% csrf_token %}
+                {% if has_active_session and not has_taken %}
+                <button type="submit">Go to My Survey</button>
+                {% else %}
+                <p>You have already taken the health check.</p>
+                {% endif %}
+            </form>
+        </section>
+        <section class="card team-card">
+            <h4>My Team</h4>
+            <div class="team-content">
+                <div class="team-icon">
+                    <img src="{% static 'dashboard/images/teamicon.png' %}" alt="Team Icon">
+                </div>
+                <div class="team-info">
+                    <h3>{{ request.user.team }}</h3>
+                </div>
+            </div>
+        </section>
+        <section class="card trend-card">
+            <h3>My Trends</h3>
+            <div class="chart-container">
+                <canvas id="myTrendsChart"></canvas>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myTrendsChart').getContext('2d');
+        // Initialise chart here
+    </script>
 </body>
 
 </html>
