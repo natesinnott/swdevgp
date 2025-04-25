@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'visualisation/css/visualisation.css' %}">
     <!-- Chart.js library for rendering chart -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Trends</title>
 </head>
 
@@ -39,13 +41,16 @@
     </nav>
 
     <main class="trends-page">
-        <h1 id="trends-heading" class="trends-title">Trends</h1>
+        <h1 id="trends-heading" class="trends-title">Hello {{ request.user.first_name }}</h1>
+        
         <!-- Sidebar holding filter controls -->
         <aside class="filters">
             <!-- Form to submit filter parameters via GET -->
             <form id="trends-filters" method="get">
                 <fieldset>
                     <legend>Filters</legend>
+
+                    
 
                     <div class="filter-group">
                         <label>
@@ -61,22 +66,21 @@
                     <div class="filter-group">
                         <label for="category">Category</label>
                         <select id="category" name="category">
-                            <option value="" disabled selected>Select category</option>
+                            <option value="" selected>All Categories</option>
+                            {% for category in categories %}
+                            <option value="{{ category }}">{{ category }}</option>
+                            {% endfor %}
                         </select>
                     </div>
 
                     <div class="filter-group">
-                        <label for="start-quarter">Starting Quarter</label>
-                        <select id="start-quarter" name="start_quarter">
-                            <option value="" disabled selected>Select start</option>
-                        </select>
+                        <label for="start-date">Starting Date</label>
+                        <input type="date" id="start-date" name="start_date" value="{{ request.GET.start_date }}">
                     </div>
 
                     <div class="filter-group">
-                        <label for="end-quarter">Ending Quarter</label>
-                        <select id="end-quarter" name="end_quarter">
-                            <option value="" disabled selected>Select end</option>
-                        </select>
+                        <label for="end-date">Ending Date</label>
+                        <input type="date" id="end-date" name="end_date" value="{{ request.GET.end_date }}">
                     </div>
                     <div class="filter-group">
                         <button type="submit" id="apply-filters">Apply Filters</button>
@@ -88,8 +92,13 @@
         <!-- Main content area for the trends chart -->
         <!-- TODO: Add CSS to size chart container dynamically. -->
         <section class="chart-container">
+            <div id="chart-type-toggle" style="text-align: right; margin-bottom: 10px;">
+                <label><input type="radio" name="chartType" value="line" checked> Line</label>
+                <label><input type="radio" name="chartType" value="bar"> Bar</label>
+            </div>
             <canvas id="trends-chart"></canvas>
-            <!-- Chart will be rendered here by Eeliya -->
+            <!-- Chart will be rendered here by Eeliya done in trends.js-->
+            <script src="{% static 'visualisation/js/trends.js' %}"></script>
         </section>
     </main>
 </body>

@@ -30,6 +30,7 @@ aside.filters {
     height: calc(100vh - 240px); /* fill viewport */
     min-height: auto;
     overflow-y: auto;
+
   }
 
 /* Chart container: flex item that centers chart and fills vertical space */
@@ -43,6 +44,7 @@ section.chart-container {
     justify-content: center;
     align-items: center;
     height: calc(100vh - 240px); /* match filters height */
+
   }
 
 /* Filter form elements styling */
@@ -94,7 +96,14 @@ aside.filters legend {
     background: #fff;
     font-size: 0.95rem;
   }
-
+.filter-group input[type=date] {
+  width: 92%;
+  padding: 0.5rem;
+  border: 1px solid #dcdfe3;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 0.95rem;
+}
 
 /* Filters button styling */
 #apply-filters {
@@ -120,3 +129,27 @@ aside.filters fieldset .filter-group:last-child {
     width: 100%;
     height: 400px; /* Eeliya can override */
   }
+
+
+/* Chart type toggle styles */
+#chart-type-toggle {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 1rem;
+    z-index: 10;
+    background: #fff;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid #dcdfe3;
+    border-radius: 4px;
+    
+}
+
+#chart-type-toggle label {
+    margin-left: 0.75rem;
+    cursor: pointer;
+}
+
+.chart-container {
+    position: relative; /* to position toggle within it */
+}

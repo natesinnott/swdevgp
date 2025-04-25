@@ -34,14 +34,14 @@ class SurveyResponse(models.Model):
     id = models.AutoField(primary_key=True)
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
-    quarter = models.IntegerField()
-    year = models.IntegerField()
+    session = models.ForeignKey('Session', on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'SurveyResponse'
+        unique_together = (('employee', 'session'),)
 
     def __str__(self):
-        return (str(self.quarter) + str(self.year) + "by" + self.employee.firstName + " " + self.employee.lastName)
+        return f"Response in session {self.session} by {self.employee.firstName} {self.employee.lastName}"
     
 class SurveyDetail(models.Model):
     id = models.AutoField(primary_key=True)
@@ -54,6 +54,23 @@ class SurveyDetail(models.Model):
 
     def __str__(self):
         return f"{self.survey.survey_title} - {self.question.question_title}"  
+
+class Session(models.Model):
+    id = models.AutoField(primary_key=True)
+    survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+
+    class Meta:
+        db_table = 'Session'
+
+    def is_active(self):
+        from django.utils import timezone
+        now = timezone.now()
+        return self.start_date <= now <= self.end_date
+
+    def __str__(self):
+        return f"{self.survey.survey_title} ({self.start_date.date()} - {self.end_date.date()})"
 
 class SurveyResponseDetail(models.Model):
     id = models.AutoField(primary_key=True)
