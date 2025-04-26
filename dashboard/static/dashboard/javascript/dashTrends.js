@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("/data/")
         .then((response) => response.json())
         .then((data) => {
+            const latestDate = data.dates[data.dates.length - 1];
             const ctx = document.getElementById("myTrendsChart").getContext("2d");
             new Chart(ctx, {
                 type: "bar",
@@ -27,21 +28,36 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 options: {
                     indexAxis: "y",
+                    maintainAspectRatio: false,
                     responsive: true,
                     plugins: {
                         legend: {
                             display: false,
                         },
                         title: {
-                            display: false,
-                            text: "Survey Response Trends (Latest Session)",
+                            display: false
                         },
                     },
+                    
                     scales: {
                         x: {
                             ticks: {
                                 callback: function(value) {
                                     return Number.isInteger(value) ? value : '';
+                                }
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                callback: function() {
+                                    return '';
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: latestDate,
+                                font: {
+                                    size: 12
                                 }
                             }
                         }
