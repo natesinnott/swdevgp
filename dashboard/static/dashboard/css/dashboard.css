@@ -20,8 +20,9 @@
 .main-content .team-card h4 {
     margin-top: 0;
     margin-bottom: 0.5rem;
-    color: black;
+    color: rgb(159, 159, 159);
     font-size: clamp(18px, 4vw, 3rem);
+    font-family: 'SkyRegular';
 }
 
 .main-content .team-card {
@@ -39,7 +40,7 @@
 
 .main-content .team-card .team-info h3 {
     margin: 0;
-    color: black;
+    color:#4b50fc;
     font-size: clamp(18px, 3.5vw, 2.5rem);
 }
 
@@ -120,11 +121,16 @@
 /* Trend Card */
 .main-content .trend-card h3 {
     margin-top: 0;
-    color: black;
+    color: rgb(159, 159, 159);
     font-size: clamp(18px, 4vw, 3rem);
 }
 
 .main-content .trend-card .chart-container {
     height: 15vh;
     min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -2rem;
+
 }

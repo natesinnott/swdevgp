@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Account Verification Required</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+    
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+            background-color: #f2f2f2;
+        }
+        .message-box {
+            background: white;
+            padding: 30px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #0078D4;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #005A9E;
+        }
+    </style>
+</head>
+<body>
+    <div class="message-box">
+        <h2>Access Denied</h2>
+        <p>{{ message }}</p>
+        <div style="margin-top: 20px;">
+            <a href="javascript:history.back()" class="button">Back</a>
+            <a href="mailto:support@skyuk.com" class="button">Contact Admin</a>
+        </div>
+    </div>
+</body>
+</html>
