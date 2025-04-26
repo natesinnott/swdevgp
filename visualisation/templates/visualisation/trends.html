@@ -39,10 +39,14 @@
             <p>Sign out</p>
         </a>
     </nav>
-
-    <main class="trends-page">
-        <h1 id="trends-heading" class="trends-title">My Trends</h1>
-        
+    <div class="welcome">
+        <h2>Hello, {{ request.user.first_name }}</h2>
+    </div>
+    <div id="datetime">
+        {% now "D j M H:i" %}
+    </div>
+    <script src="{% static 'javascripts/datetime.js' %}"></script>       
+    <main class="trends-page"> 
         <!-- Sidebar holding filter controls -->
         <aside class="filters">
             <!-- Form to submit filter parameters via GET -->

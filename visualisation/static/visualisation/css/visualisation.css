@@ -1,9 +1,10 @@
 /* Layout */
 /* Container for the trends page; offset right for nav and using flexbox */
 main.trends-page {
-    margin: 0 0 0 220px;
+    margin: 150px 0 0 220px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
     align-items: flex-start;
     gap: 2rem;
     padding: 1rem 2rem;
@@ -36,7 +37,8 @@ aside.filters {
 /* Chart container: flex item that centers chart and fills vertical space */
 /* Will most likely need to be adjusted by Eeliya when Chart.js implemented */
 section.chart-container {
-    flex: 1 1 auto;
+    flex: 1 1 0;
+    min-width: 0; 
     background: #fff;
     border: 1px solid #dcdfe3;
     padding: 1.5rem;
