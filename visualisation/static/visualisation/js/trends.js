@@ -71,20 +71,18 @@ function fetchChartData() {
                     }
                 },
                 scales: {
-                    
                     y: {
                         ticks: {
                             callback: function(value) {
-                                return Number.isInteger(value) ? value : '';
+                                if (Number.isInteger(value)) {
+                                    return value;
+                                }
+                                return '';
                             }
                         }
                     }
                 }
-                
-                
-            }
-            
-        });
+            }});
         } else {
             alert("Error fetching data!");
         }
