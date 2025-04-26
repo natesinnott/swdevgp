@@ -87,4 +87,4 @@ def trends_data(request):
         "green": green,
         "amber": amber,
         "red": red,
-    })
+    }) 
