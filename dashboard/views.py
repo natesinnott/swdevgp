@@ -51,14 +51,17 @@ from django.views.decorators.http import require_GET
 @require_GET
 def trends_data(request):
     try:
-        latest_session = Session.objects.latest("start_date")
-    except Session.DoesNotExist:
-        return JsonResponse({"error": "No sessions available."}, status=400)
-
-    try:
         employee = Employee.objects.get(user=request.user)
     except Employee.DoesNotExist:
         return JsonResponse({"error": "Employee record not found."}, status=404)
+
+    try:
+        latest_response = SurveyResponse.objects.filter(
+            employee=employee
+        ).select_related('session').latest('session__start_date')
+        latest_session = latest_response.session
+    except SurveyResponse.DoesNotExist:
+        return JsonResponse({"error": "No completed surveys available."}, status=400)
 
     data = SurveyResponseDetail.objects.select_related("response__session", "question").filter(
         response__session=latest_session,
@@ -84,4 +87,4 @@ def trends_data(request):
         "green": green,
         "amber": amber,
         "red": red,
-    })
+    }) 
