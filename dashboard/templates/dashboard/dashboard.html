@@ -40,7 +40,7 @@
             </div>
             <div class="profile-info">
                 <h3>{{ request.user.first_name }} {{ request.user.last_name }}</h3>
-                <p>Senior iOS Engineer</p>
+                <p>{{ jobTitle }}</p>
                 <p>{{ request.user.email }}</p>
             </div>
         </section>
@@ -70,13 +70,13 @@
             <h3>My Trends</h3>
             <div class="chart-container">
                 <canvas id="myTrendsChart"></canvas>
+                <script src="{% static 'dashboard/javascript/dashTrends.js' %}"></script>
             </div>
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const ctx = document.getElementById('myTrendsChart').getContext('2d');
-        // Initialise chart here
     </script>
 </body>
 
