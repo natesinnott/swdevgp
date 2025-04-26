@@ -142,3 +142,11 @@
     margin-top: -2rem;
 
 }
+
+.SurveyError{
+    border: #f5296d solid;
+    padding: 10px 10px 10px 10px;
+    color: #f5296d !important;
+    border-radius: 5px;
+    background-color: #ffe5ee;
+}
