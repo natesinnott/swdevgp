@@ -1,11 +1,17 @@
+<!--Authored: Eeliya-->
+
+<!--- load static files like css --->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--- page for users not verified yet --->
     <title>Account Verification Required</title>
+    <!--- main css file --->
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
     
     <style>
+        /* styling for layout + look */
         body {
             text-align: center;
             padding: 50px;
@@ -34,9 +40,13 @@
     </style>
 </head>
 <body>
+    <!--- main box showin msg --->
     <div class="message-box">
+        <!--- heading saying user cant access --->
         <h2>Access Denied</h2>
+        <!--- showin dynamic msg from backend --->
         <p>{{ message }}</p>
+        <!--- buttons for goin back or get help --->
         <div style="margin-top: 20px;">
             <a href="javascript:history.back()" class="button">Back</a>
             <a href="mailto:support@skyuk.com" class="button">Contact Admin</a>

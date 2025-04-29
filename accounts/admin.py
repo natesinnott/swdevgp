@@ -1,3 +1,4 @@
+#Authored by Nate
 from django.contrib import admin
 from .models import CustomUser, Department, Team, Employee
 

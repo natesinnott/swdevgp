@@ -1,3 +1,5 @@
+/* Authored by Eeliya */
+/* main container for the survey form */
 .surveyform{
     height: 75vh;
     width: auto;
@@ -11,6 +13,7 @@
     overflow: auto;
    
 }
+/* close button styles */
 .close{
     position: absolute;
     top: 20px;
@@ -18,6 +21,7 @@
     cursor: pointer;
 }
 
+/* main splash section style */
 .splash{
     background-color: white;
     height: 100%;
@@ -28,12 +32,14 @@
     min-height: 0;
     overflow: auto;
 }
+/* list item style inside splash section */
 .splash li{ 
     margin-bottom: 10px;
     font-size: clamp(14px, 1.5vw, 64px);
     color: #919191;
     
 }
+/* ordered list inside splash section */
 .splash ol{
     margin-right: 20px;
     flex: 1;
@@ -42,10 +48,12 @@
     justify-content: space-between;
 }
 
+/* style for image guide section */
 .splash li.imageGuide{
     list-style: none;
     padding: 0;
 }
+/* style for images in the guide */
 .imageGuide img{
     width: 700px;
     height: auto;
@@ -54,6 +62,7 @@
     margin-right: auto;
 }
 
+/* container for archive section */
 .archives{
     background-color: white;
     height: 100%;
@@ -64,6 +73,7 @@
     min-height: 0;
     overflow: auto;
 }
+/* form layout for inputs and buttons */
 form {
     display: flex;
     align-items: center;
@@ -72,6 +82,7 @@ form {
     margin-right: 20px;
 }
 
+/* style for terms and conditions label */
 .terms-label {
     display: flex;
     align-items: center;
@@ -84,12 +95,14 @@ form {
 
 }
 
+/* style for custom checkbox */
 input[type="checkbox"] {
     transform: scale(2.5); 
     border: 2px solid #555;
     margin-right: 10px;
 }
 
+/* style for submit button */
 button[type="submit"] {
     font-family: 'SkyRegular';
     height: 60px;
@@ -107,6 +120,7 @@ button[type="submit"]:hover {
     background-color: #000000;
 }
 
+/* unordered list in archives section */
 .archives ul{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -116,6 +130,7 @@ button[type="submit"]:hover {
     flex-direction: column;
     justify-content: space-between;
 }
+/* list item style inside archive section */
 .archives li{
     margin-bottom: 10px;
     font-size: clamp(16px, 2.5vw, 26px);
@@ -125,12 +140,14 @@ button[type="submit"]:hover {
     gap: 10px;
 }
 
+/* style for images inside archive list items */
 .archives img{
     height: auto;
     width: 50px;
     float: left;
 }
 
+/* style for dashed line between sections */
 .dashed-line {
     border-left: 3px dashed #c2c2c2;
     height: 100%; 
@@ -139,14 +156,17 @@ button[type="submit"]:hover {
     top: 0;
 }
 
+/* style for pink colored text */
 .pink{
     color:#f5296d;
 }
 
+/* style for blue colored text */
 .blue{
     color:#4b50fc;
 }
 
+/* style for h3 titles in various sections */
 h3{
     font-family: 'SkyMedium';
     color: #919191;
@@ -156,7 +176,7 @@ h3{
     margin-bottom: 10px;
 }
 
-/* Info and error message styles */
+/* style for info messages */
 .info-message,
 .error-message {
     padding: 12px 20px;
@@ -172,15 +192,14 @@ h3{
     border: 1px solid #4b50fc;
 }
 
-/* Light pink background with pink/red text for error messages */
+/* style for error messages */
 .error-message {
     background-color: #ffe5ee;
     color: #f5296d;
     border: 1px solid #f5296d;
 }
 
-/* Survey complete page styles */
-
+/* container for survey complete page */
 .surveycomplete {
     height: 75vh;
     width: auto;
@@ -199,10 +218,12 @@ h3{
     justify-content: center;
 }
 
+/* title style for survey complete page */
 .surveycomplete h3 {
     text-align: center;
 }
 
+/* paragraph style for survey complete page */
 .surveycomplete p {
     font-family: 'SkyRegular';
     color: black;
@@ -213,6 +234,7 @@ h3{
     text-align: center;
 }
 
+/* button style for survey complete page */
 .surveycomplete button {
     margin-left: auto;
     margin-right: auto;

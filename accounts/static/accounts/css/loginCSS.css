@@ -1,3 +1,5 @@
+/*Authored by Eeliya*/
+/* loadin custom fonts */
 @font-face {
     font-family: 'SkyRegular';
     src: url('/static/fonts/sky-regular.ttf') format('truetype');
@@ -12,6 +14,7 @@
     font-style: normal;
 }
 
+/* overall page layout and bg color */
 body {
     font-family: 'SkyRegular';
     background-color: #f4f4f9;
@@ -24,6 +27,7 @@ body {
     align-items: center; 
 }
 
+/* heading style */
 h2 {
     font-family: 'SkyMedium';
     font-size: 2rem;
@@ -32,11 +36,13 @@ h2 {
     margin-top: 5px; 
 }
 
+/* logo img size */
 img {
     width: fit-content;
     height: fit-content;
 }
 
+/* form box styling */
 form {
     width: 50vw; 
     height: 50vh;
@@ -46,29 +52,33 @@ form {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
+/* login section text style */
 .login{
     text-align: center;
     font-size: 20px;
 }
 
+/* input field shape and padding */
 input{
     border-radius: 12px;
     padding: 0 10px; 
 }
 
+/* dropdown same style as input */
 select{
     border-radius: 12px;
     border: none;
     padding: 0 10px; 
 }
 
+/* no border on inputs and buttons */
 input,
 button{
     border: none;
     
 }
 
+/* center inputs and btns inside login */
 .login input,
 .login button {
     
@@ -81,11 +91,13 @@ button{
     width: 25vw;
     text-align: center;
 }
+/* spacing above login form */
 .loginform{
     margin-top: 10vh;
     text-align: center;
 }
 
+/* style for already registered txt */
 .redirect-text {
     font-family: 'SkyRegular';
     font-size: 20px;
@@ -93,12 +105,12 @@ button{
     text-align: center;
 }
 
+/* spacing above login btn */
 .login button{
     margin-top: 10vh;
 }
 
-
-
+/* main button style */
 button {
     height: 5vh;
     width: 10vw;
@@ -110,20 +122,24 @@ button {
     transition: background-color 0.3s, color 0.3s;
     cursor: pointer;
 }
+/* button hover effect */
 button:hover {
     background-color: #f4f4f9; 
     color: #727272; 
 }
 
+/* links inside form */
 a {
     color: rgb(0, 26, 255); 
     text-decoration: none; 
 }
 
+/* link hover underline */
 a:hover {
     text-decoration: underline; 
 }
 
+/* layout of signup form fields */
 .signupform {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -132,16 +148,19 @@ a:hover {
     padding-bottom: 20px;
     height: 30vh;
 }
+/* size of signup inputs */
 .signup input{
     width: 19vw;
     height: 3vh;
 } 
 
+/* size of signup dropdown */
 .signup select{
     width: 19vw;
     height: 3vh;
     
 }
+/* field list inside signup */
 .fields {
     display: grid;
     grid-template-columns: 1fr;
@@ -150,10 +169,12 @@ a:hover {
     overflow-y: auto;
 }
 
+/* red border for error inputs */
 input.error {
     border: 2px solid red;
 }
 
+/* box for help txt or errors */
 .password-help-text {
     width: 18vw;
     height: 26vh;
@@ -167,12 +188,14 @@ input.error {
     overflow-y: auto;
 }
 
+/* style for register btn area */
 .register-button {
     margin-top: 4vh;
     display: block;
     text-align: center;
 }
 
+/* style for all error msgs */
 .first-name-error, 
 .last-name-error, 
 .username-error, 
@@ -185,6 +208,7 @@ input.error {
     color: red;
 }
 
+/* apply red border to both input and dropdown if error */
 input.error, select.error {
     border: 2px solid red;
 }

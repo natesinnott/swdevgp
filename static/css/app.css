@@ -1,3 +1,5 @@
+/* Authored by Eeliya */
+/* define custom fonts for the app */
 @font-face {
     font-family: 'SkyRegular';
     src: url('/static/fonts/sky-regular.ttf') format('truetype');
@@ -12,6 +14,7 @@
     font-style: normal;
 }
 
+/* body styling, font, and background color */
 body {
     font-family: 'SkyRegular';
     background-color: #ebebeb;
@@ -19,6 +22,7 @@ body {
     margin: 0;
 }
 
+/* styling for the sidebar navigation */
 nav {
     display: flex;
     flex-direction: column;
@@ -32,6 +36,7 @@ nav {
     z-index: 1;
 }
 
+/* logo image inside the nav */
 nav img {
     width: 190px;
     height: auto;
@@ -39,6 +44,7 @@ nav img {
     margin: 20px;
 }
 
+/* list style for navigation links */
 nav ul {
     list-style-type: none;
     display: flex;
@@ -50,6 +56,7 @@ nav ul {
     
 }
 
+/* style for navigation links */
 nav li a {
     display: block;
     text-align: center;
@@ -64,10 +71,12 @@ nav li:first-child a {
     border-top: solid #e8e8e8;
 }
 
+/* hover effect for navigation links */
 nav li a:hover {
     background-color: #f0f0f0;
 }
 
+/* style for logout link */
 .logout-link {
     padding: 20px 16px;
     color: black;
@@ -82,6 +91,7 @@ nav li a:hover {
 .logout-link:hover{
     text-decoration: underline;
 }
+/* styling for the "screen too small" message */
 .screen-too-small {
     display: none;
     justify-content: center;
@@ -93,6 +103,7 @@ nav li a:hover {
     padding: 20px;
 }
 
+/* styling for the logout icon image */
 .logout-link img {
     padding-left: 10px;
     width: 25px;
@@ -100,6 +111,7 @@ nav li a:hover {
     margin-right: 8px;  
 }
 
+/* welcome heading style */
 .welcome h2 {
     font-size: 40px;
     color: rgb(51, 51, 51);
@@ -108,6 +120,7 @@ nav li a:hover {
     left: 250px; 
 }
 
+/* datetime display styling */
 #datetime {
     font-size: 40px;
     color: rgb(51, 51, 51);
@@ -117,6 +130,7 @@ nav li a:hover {
     right: 20px; 
 }
 
+/* style for active status image */
 .active img{
     position: fixed;
     width: 7px;
@@ -127,38 +141,36 @@ nav li a:hover {
     padding: 0;
 }
 
-/* -----------------------------------------------------------------
-   On small screens, hide all site content and show the desktop-only
-   overlay message
-   ----------------------------------------------------------------- */
-   #mobile-overlay {
-    display: none;               /* hidden by default */
+/* mobile-specific overlay for small screens */
+#mobile-overlay {
+  display: none;               /* hidden by default */
+}
+
+/* styles for screens smaller than 1024px */
+@media (max-width: 1024px) {
+  /* hide everything except our overlay */
+  body > *:not(#mobile-overlay) {
+    display: none !important;
   }
-  
-  @media (max-width: 1024px) {
-    /* hide everything except our overlay */
-    body > *:not(#mobile-overlay) {
-      display: none !important;
-    }
-  
-    /* show & style the overlay to fill the viewport */
-    #mobile-overlay {
-      display: flex;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: #fff;
-      z-index: 9999;            /* sit on top of everything */
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      text-align: center;
-    }
-  
-    /* style the message */
-    #mobile-overlay p {
-      font-size: 1.2rem;
-      color: #333;
-      max-width: 90%;
-      line-height: 1.4;
-    }
+
+  /* show & style the overlay to fill the viewport */
+  #mobile-overlay {
+    display: flex;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #fff;
+    z-index: 9999;            /* sit on top of everything */
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    text-align: center;
   }
+
+  /* style the message */
+  #mobile-overlay p {
+    font-size: 1.2rem;
+    color: #333;
+    max-width: 90%;
+    line-height: 1.4;
+  }
+}

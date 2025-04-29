@@ -1,9 +1,12 @@
+/* Authored by Eeliya */
+/* styles for the logo image */
 .logo img {
     width: 520px; 
     margin: 20px auto;
     display: block;
 }
 
+/* container for each survey card */
 .card {
     padding-top: 10px;
     width: calc(100% - 60px);
@@ -11,22 +14,25 @@
     margin: 20px 30px;
     display: flex;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: hidden; /* to prevent resizing */
     gap: 20px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
 }
 
+/* styles for title and status section inside the card */
 .card > .titleAndStates {
     flex: 0 0 70%;
     max-width: 65%;
 }
 
+/* styles for the comments section inside the card */
 .card > .commentsbox {
     flex: 0 0 30%;
 }
 
+/* layout for title and state section (flex column) */
 .titleAndStates{
     position: relative;
     height: 97%;
@@ -38,6 +44,7 @@
     justify-content: space-evenly;
 }
 
+/* layout for comments section (flex column) */
 .commentsbox{
     position: relative;
     height: 97%;
@@ -48,22 +55,26 @@
     overflow: auto;
 }
 
+/* style for main titles in the card */
 h3{
     font-family: 'SkyMedium';
     font-size: 32px;
     display: block;
     margin: 10px auto;
 }
+/* style for sub-titles in the card */
 h4{
     display: block;
     margin: 0px auto;
 }
 
+/* hide default radio button */
 input[type="radio"] {
     display: none;
 }
 
 
+/* style for radio button labels (rating choices) */
 .rating input[type="radio"] + label {
     display: block;
     font-family: 'SkyRegular';
@@ -81,18 +92,22 @@ input[type="radio"] {
 }
 
 
+/* style for 'good' rating option */
 .rating.good input[type="radio"] + label {
     background-color: #d9f2e3;
 }
 
+/* style for 'average' rating option */
 .rating.average input[type="radio"] + label {
     background-color: #fff3cd;
 }
 
+/* style for 'bad' rating option */
 .rating.bad input[type="radio"] + label {
     background-color: #f8d7da;
 }
 
+/* style when 'good' rating is selected */
 .rating.good input[type="radio"]:checked + label {
     font-family: 'SkyMedium';
     background-color: #006d26;
@@ -100,6 +115,7 @@ input[type="radio"] {
     border: 5px solid black;
 }
 
+/* style when 'average' rating is selected */
 .rating.average input[type="radio"]:checked + label {
     font-family: 'SkyMedium';
     background-color: #d4a200;
@@ -107,6 +123,7 @@ input[type="radio"] {
     border: 5px solid black;
 }
 
+/* style when 'bad' rating is selected */
 .rating.bad input[type="radio"]:checked + label {
     font-family: 'SkyMedium';
     background-color: #a9000e;
@@ -115,6 +132,7 @@ input[type="radio"] {
 }
 
 
+/* container for the rating section */
 .rating {
     font-size: 18px;
     margin: 10px 0;
@@ -126,6 +144,7 @@ input[type="radio"] {
     width: 100%;
 }
 
+/* style for icons next to rating labels */
 .rating .icon {
     border-radius: 15px;
     height: auto;
@@ -158,6 +177,7 @@ textarea {
     box-sizing: border-box;
 }
 
+/* container for additional rating options */
 .extraRatings {
     display: flex;
     justify-content: center;
@@ -167,6 +187,7 @@ textarea {
     margin-bottom: 20px;
 }
 
+/* style for extra rating labels (e.g. improve, same, worse) */
 .extraRatings input[type="radio"] + label {
     
     font-family: 'SkyRegular';
@@ -179,6 +200,7 @@ textarea {
 
 }
 
+/* layout for individual extra rating options */
 .extraRatings .option {
     display: flex;
     flex-direction: column;
@@ -191,6 +213,7 @@ textarea {
     text-align: center;
 }
 
+/* style for icons in extra ratings */
 .extraRatings .option img{
     opacity: 0.5;
 }
@@ -201,6 +224,7 @@ textarea {
     display: block;
 }
 
+/* style for text labels in extra ratings */
 .extraRatings label {
     font-family: 'SkyRegular';
     font-size: 18px;
@@ -208,41 +232,50 @@ textarea {
     cursor: pointer;
 }
 
+/* style for strong text in extra ratings */
 .extraRatings strong{
     margin-left: 10px;
     margin-right: 10px;
     
 }
 
-/* use classes on inputs for trend options */
+/* style for 'improve' extra rating option */
 .extraRatings input.opt-improve + .option {
     background-color: #d9f2e3;
 }
+/* style for 'same' extra rating option */
 .extraRatings input.opt-same + .option {
     background-color: #fff3cd;
 }
+/* style for 'worse' extra rating option */
 .extraRatings input.opt-worse + .option {
     background-color: #f8d7da;
 }
+/* style when 'improve' is selected */
 .extraRatings input.opt-improve:checked + .option {
     background-color: #006d26;
 }
+/* style when 'same' is selected */
 .extraRatings input.opt-same:checked + .option {
     background-color: #d4a200;
 }
+/* style when 'worse' is selected */
 .extraRatings input.opt-worse:checked + .option {
     background-color: #a9000e;
 }
 
+/* style for selected extra rating icons */
 .extraRatings input[type="radio"]:checked + .option img {
     opacity: 1;
     filter: brightness(0) invert(1); 
 }
+/* style for selected extra rating options */
 .extraRatings input[type="radio"]:checked + .option {
     border: 3px solid black;
     opacity: 1;
 }
 
+/* style for buttons (e.g., next, previous) */
 button{
     width: 60%;
     margin: 5px auto;
@@ -252,28 +285,32 @@ button{
     cursor: pointer;
 }
 
+/* style for the next button */
 .next {
     background-color: blue;
     color: white;
     transition: background-color 0.3s ease;
 }
 
+/* hover effect for the next button */
 .next:hover {
     background-color: darkblue; 
 }
 
+/* style for the previous button */
 .previous{
     transition: background-color 0.3s ease; 
     background-color: #c0c0c0;
     color: black;
 }
 
+/* hover effect for the previous button */
 .previous:hover{
     background-color: rgb(111, 111, 111);
     color: white;
 }
 
-/* Utility class to hide elements */
+/* utility class to hide elements */
 .hidden {
     display: none !important;
 }

@@ -1,7 +1,10 @@
+<!--Authored: Nate & Eeliya-->
+<!-- loading static files -->
 {% load static %}
 <html>
 
 <head>
+    <!-- head stuff like css, title, favicon -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/loginCSS.css' %}">
     <title>Signup To SkyHealth</title>
@@ -9,15 +12,20 @@
 </head>
 
 <body>
+    <!-- msg for mobile users -->
     <div id="mobile-overlay">
         <p>Please view this site on a desktop or tablet for the best experience.</p>
     </div>
+    <!-- logo on top -->
     <img src="{% static 'accounts/images/healthlogo.png' %}">
+    <!-- signup form -->
     <form method="POST" class="signup">
         <h2>Sign up</h2>
         {% csrf_token %}
+        <!-- container for all input fields -->
         <div class="signupform">
             <div class="fields">
+                <!-- first name input -->
                 <div class="first-name-field">
                     {{ form.first_name }}
                     {% if form.first_name.errors %}
@@ -26,6 +34,7 @@
                     </script>
                     {% endif %}
                 </div>
+                <!-- last name input -->
                 <div class="last-name-field">
                     {{ form.last_name }}
                     {% if form.last_name.errors %}
@@ -34,6 +43,7 @@
                     </script>
                     {% endif %}
                 </div>
+                <!-- username input -->
                 <div class="username-field">
                     {{ form.username }}
                     {% if form.username.errors %}
@@ -42,6 +52,7 @@
                     </script>
                     {% endif %}
                 </div>
+                <!-- email input -->
                 <div class="email-field">
                     {{ form.email }}
                     {% if form.email.errors %}
@@ -50,6 +61,7 @@
                     </script>
                     {% endif %}
                 </div>
+                <!-- password1 input -->
                 <div class="password1-field">
                     {{ form.password1 }}
                     {% if form.password1.errors or form.password2.errors %}
@@ -58,6 +70,7 @@
                     </script>
                     {% endif %}
                 </div>
+                <!-- password2 input -->
                 <div class="password2-field">
                     {{ form.password2 }}
                     {% if form.password1.errors or form.password2.errors %}
@@ -66,6 +79,7 @@
                     </script>
                     {% endif %}
                 </div>
+                <!-- team dropdown -->
                 <div class="team-selection">
                     {{ form.team }}
                     {% if form.team.errors %}
@@ -75,6 +89,8 @@
                     {% endif %}
                 </div>
             </div>
+            <!-- this whole part shows error msgs if user messes up input, 
+             it also adds 'error' class to field so css can highlight it -->
             <div class="password-help-text">
                 {% if not form.password1.errors and not form.password2.errors and not form.email.errors and not form.team.errors and not form.username.errors %}
                 {{ form.password1.help_text }}
@@ -116,11 +132,13 @@
                 {% endif %}
             </div>
         </div>
+        <!-- register bttn -->
         <div class="register-button">
             <button type="submit">Register</button>
         </div>
 
     </form>
+    <!-- link to login if already signed up -->
     <div class="redirect-text">
         <p>Already have a Sky Health Account? <a href="{% url 'login' %}">Login here</a>.</p>
     </div>
