@@ -1,0 +1,152 @@
+/* Dashboard grid layout */
+.main-content {
+    margin-left: 220px;
+    margin-top: 150px;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 18.5% 18.5% 18.5% 18.5% 18.5%;
+    grid-template-areas:
+        "profile profile profile new-check new-check"
+        "team team trend trend trend";
+    gap: 1.5rem;
+}
+
+/* Base card styling */
+.main-content .card {
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: calc(60vh/2);
+}
+
+/* Team Card Heading */
+.main-content .team-card h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: rgb(159, 159, 159);
+    font-size: clamp(18px, 4vw, 3rem);
+    font-family: 'SkyRegular';
+}
+
+.main-content .team-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    grid-area: team;
+}
+/* Team Card Content */
+.main-content .team-card .team-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.main-content .team-card .team-info h3 {
+    margin: 0;
+    color:#4b50fc;
+    font-size: clamp(18px, 3.5vw, 2.5rem);
+}
+
+.main-content .team-card .team-icon {
+    width: clamp(60px, 12vw, 220px);
+    margin-right: 1rem;
+}
+
+.main-content .team-card .team-icon img {
+    width: 100%;
+    height: auto;
+}
+
+/* New Health Check Card */
+.main-content .new-check-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-area: new-check;
+}
+.main-content .new-check-card h3 {
+    margin-top: 0;
+    color: #e91e63;
+    font-size: clamp(18px, 4vw, 3rem);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.main-content .new-check-card p {
+    margin: 0.5rem 0;
+    font-size: clamp(14px, 3vw, 1.5rem);
+    color: black;
+    text-align: center;
+    font-weight: 600;
+}
+
+.main-content .new-check-card button {
+    display: block;
+    margin: 0 auto;
+    padding: 0.75em 1.5em;
+    font-size: clamp(16px, 2.5vw, 1.5rem);
+    border: 2px solid #e91e63;
+    border-radius: 0.25rem;
+    background: none;
+    color: #e91e63;
+    cursor: pointer;
+    align-self: center;
+}
+
+/* Profile Card */
+.main-content .profile-card {
+    display: flex;
+    align-items: center;
+    grid-area: profile;
+}
+
+.main-content .profile-card .profile-icon {
+    width: clamp(60px, 12vw, 220px);
+    margin-right: 1rem;
+}
+
+.main-content .profile-card .profile-icon img {
+    width: 100%;
+    height: auto;
+}
+
+.main-content .profile-card .profile-info h3 {
+    margin: 0;
+    color: #e91e63;
+    font-size: clamp(18px, 3.25vw, 3.75rem);
+}
+
+.main-content .profile-card .profile-info p {
+    margin: 0.25rem 0;
+    font-size: clamp(14px, 2vw, 2rem);
+    color: #777;
+}
+
+/* Trend Card */
+.main-content .trend-card {
+    grid-area: trend;
+}
+.main-content .trend-card h3 {
+    margin-top: 0;
+    color: rgb(159, 159, 159);
+    font-size: clamp(18px, 4vw, 3rem);
+}
+
+.main-content .trend-card .chart-container {
+    height: 15vh;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -2rem;
+
+}
+
+.SurveyError{
+    border: #f5296d solid;
+    padding: 10px 10px 10px 10px;
+    color: #f5296d !important;
+    border-radius: 5px;
+    background-color: #ffe5ee;
+}
