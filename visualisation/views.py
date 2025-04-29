@@ -1,3 +1,4 @@
+#Authored by Eeliya
 from django.shortcuts import render
 from django.http import JsonResponse
 from collections import defaultdict
@@ -9,31 +10,39 @@ from datetime import datetime
 from django.db.models import F, Func, DateField
 from .models import Employee
 
+# render the trends page and show available question categories for filtering
 @login_required
 def trends(request):
+    # get the logged-in employee
     try:
         employee = Employee.objects.filter(user__username=request.user.username).first()
     except Employee.DoesNotExist:
         return render(request, "visualisation/trends.html", {"categories": []})
 
+    # fetch distinct question titles the employee has answered
     question_titles = Question.objects.filter(
         surveyresponsedetail__response__employee=employee
     ).values_list('question_title', flat=True).distinct()
 
+    # render the page with the list of question categories
     return render(request, "visualisation/trends.html", {"categories": question_titles})
 
 
+# fetch and return data for trends chart as JSON based on filters
 @login_required
 def trends_data(request):
+    # get filter params from request
     selected_type = request.GET.get('type', None)
     selected_category = request.GET.get('category', None)
     start_date = request.GET.get('start_date', None)
     end_date = request.GET.get('end_date', None)
 
+    # build filters for query based on selected filters
     filters = {}
     if selected_category:
         filters['question__question_title'] = selected_category
 
+    # narrow data based on whether user selected individual/team view
     if selected_type in ['individual', 'team']:
         try:
             employee = Employee.objects.filter(user__username=request.user.username).first()
@@ -49,6 +58,7 @@ def trends_data(request):
         elif selected_type == 'team':
             filters['response__employee__teamid'] = employee.teamid
 
+    # if date range provided, filter responses within it
     if start_date and end_date:
         try:
             start_date_parsed = datetime.strptime(start_date, "%Y-%m-%d").date()
@@ -64,8 +74,10 @@ def trends_data(request):
     else:
         data = Surveyresponsedetail.objects.select_related("response", "question").filter(**filters)
 
+    # prepare dict to count green, amber, red answers by date
     grouped_data = defaultdict(lambda: {"green": 0, "amber": 0, "red": 0})
 
+    # loop through responses and count answers
     for row in data:
         start_date = row.response.session.start_date.date()
         date_str = start_date.strftime("%Y-%m-%d")
@@ -78,6 +90,7 @@ def trends_data(request):
     amber = [grouped_data[d]["amber"] for d in dates]
     red = [grouped_data[d]["red"] for d in dates]
 
+    # return the structured data as JSON for the frontend chart
     return JsonResponse({
         "dates": dates,
         "green": green,

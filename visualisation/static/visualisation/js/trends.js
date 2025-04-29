@@ -1,8 +1,11 @@
+//Authored by Eeliya
+// store the current chart instance for later updates
 let currentChart = null;
 
-
+// function to fetch chart data based on filters and update the chart
 function fetchChartData() {
 
+    // collect filter values from the form to apply when fetching chart data
     var filters = {
         type: document.querySelector('input[name="scope"]:checked').value,
         category: document.getElementById("category").value,
@@ -10,24 +13,28 @@ function fetchChartData() {
         end_date: document.getElementById("end-date").value,
     };
 
+    // get selected chart type (line, bar, etc.)
     var chartType = document.querySelector('input[name="chartType"]:checked').value;
 
+    // send GET request to fetch the trend data with applied filters
     $.get('/trends/data/', filters, function (response) {
 
-        console.log("Fetching with filters:", filters);
-        console.log("Chart data response:", response);
+        // check if the response contains valid data
         if (response.dates) {
 
+            // get the canvas context for drawing the chart
             var ctx = document.getElementById('trends-chart').getContext('2d');
 
+            // if a chart already exists, destroy it before creating a new one
             if (currentChart) {
                 currentChart.destroy();
             }
 
-
+            // set the chart category label based on the selected filter
             var categoryLabel = filters.category || "All Categories";
             var chartTitle = `${categoryLabel} - ${filters.type.charAt(0).toUpperCase() + filters.type.slice(1)} Chart`;
 
+            // create a new chart instance with the fetched data
             currentChart = new Chart(ctx, {
                 type: chartType,
                 data: {
@@ -55,6 +62,7 @@ function fetchChartData() {
                         fill: false
                     }]
                 },
+                // chart options for customization (e.g., title, scales)
                 options: {
                     plugins: {
                         title: {
@@ -92,15 +100,16 @@ function fetchChartData() {
     });
 }
 
+// add event listener to handle form submission and fetch new data
 document.getElementById('trends-filters').addEventListener('submit', function (event) {
     event.preventDefault();
     fetchChartData();
 });
 
-
-
+// call fetchChartData once the page is fully loaded
 document.addEventListener('DOMContentLoaded', fetchChartData);
 
+// add event listeners to update chart when chart type changes
 document.querySelectorAll('input[name="chartType"]').forEach(function (input) {
     input.addEventListener('change', fetchChartData);
 });

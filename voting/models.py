@@ -1,3 +1,4 @@
+#Authored by Nate
 from django.db import models
 from accounts.models import Employee
 

@@ -1,3 +1,4 @@
+#Co Authored Eeliya and Nate
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from collections import defaultdict
@@ -9,9 +10,9 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def home(request):
-        # find an open session by datetime
+    # find an open session by datetime
     now = timezone.now()
-    # Get the Employee record for the logged-in user
+    # fetch the employee linked to current user
     try:
         employee = Employee.objects.get(user=request.user)
         jobTitle = employee.jobTitle
@@ -50,11 +51,13 @@ from django.views.decorators.http import require_GET
 @login_required
 @require_GET
 def trends_data(request):
+    # fetch the employee linked to current user
     try:
         employee = Employee.objects.get(user=request.user)
     except Employee.DoesNotExist:
         return JsonResponse({"error": "Employee record not found."}, status=404)
 
+    # grab most recent survey response for this employee using session date
     try:
         latest_response = SurveyResponse.objects.filter(
             employee=employee
@@ -63,13 +66,16 @@ def trends_data(request):
     except SurveyResponse.DoesNotExist:
         return JsonResponse({"error": "No completed surveys available."}, status=400)
 
+    # pull all question responses for that session to break down by answer
     data = SurveyResponseDetail.objects.select_related("response__session", "question").filter(
         response__session=latest_session,
         response__employee=employee
     )
 
+    # make a counter to track how many green/amber/red for each date
     grouped_data = defaultdict(lambda: {"green": 0, "amber": 0, "red": 0})
 
+    # go through every response detail and bump the count based on color
     for row in data:
         start_date = row.response.session.start_date.date()
         date_str = start_date.strftime("%Y-%m-%d")
@@ -77,11 +83,13 @@ def trends_data(request):
         if answer in grouped_data[date_str]:
             grouped_data[date_str][answer] += 1
 
+    # split out counts into lists so chart can plot them
     dates = sorted(grouped_data.keys())
     green = [grouped_data[d]["green"] for d in dates]
     amber = [grouped_data[d]["amber"] for d in dates]
     red = [grouped_data[d]["red"] for d in dates]
 
+    # send chart data back as json for frontend to draw
     return JsonResponse({
         "dates": dates,
         "green": green,
