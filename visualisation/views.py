@@ -2,13 +2,13 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from collections import defaultdict
-from .models import Surveyresponsedetail, Surveyresponse, Question, Session
+from voting.models import SurveyResponseDetail, SurveyResponse, Question, Session
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from datetime import datetime
 from django.db.models import F, Func, DateField
-from .models import Employee
+from accounts.models import Employee
 
 # render the trends page and show available question categories for filtering
 @login_required
@@ -56,7 +56,7 @@ def trends_data(request):
         if selected_type == 'individual':
             filters['response__employee'] = employee
         elif selected_type == 'team':
-            filters['response__employee__teamid'] = employee.teamid
+            filters['response__employee__team_id'] = employee.team_id
 
     # if date range provided, filter responses within it
     if start_date and end_date:
@@ -64,7 +64,7 @@ def trends_data(request):
             start_date_parsed = datetime.strptime(start_date, "%Y-%m-%d").date()
             end_date_parsed = datetime.strptime(end_date, "%Y-%m-%d").date()
 
-            all_data = Surveyresponsedetail.objects.select_related("response__session", "question").filter(**filters)
+            all_data = SurveyResponseDetail.objects.select_related("response__session", "question").filter(**filters)
             data = [
                 row for row in all_data
                 if start_date_parsed <= row.response.session.start_date.date() <= end_date_parsed
@@ -72,7 +72,7 @@ def trends_data(request):
         except Exception as e:
             return JsonResponse({"error": f"Date filtering error: {str(e)}"}, status=400)
     else:
-        data = Surveyresponsedetail.objects.select_related("response", "question").filter(**filters)
+        data = SurveyResponseDetail.objects.select_related("response", "question").filter(**filters)
 
     # prepare dict to count green, amber, red answers by date
     grouped_data = defaultdict(lambda: {"green": 0, "amber": 0, "red": 0})

@@ -1,3 +1,4 @@
+"""
 #Authored by Eeliya
 from django.db import models
 # department model, maps to Department table
@@ -136,3 +137,4 @@ class User(models.Model):
     class Meta:
         managed = False
         db_table = 'User'
+        """

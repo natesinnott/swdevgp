@@ -142,3 +142,5 @@ dist
 __pycache__/
 *.py[cod]
 HealthCheck.sqlite3
+git-stats.html
+gitstats.html
