@@ -51,13 +51,10 @@
                 <div class="profile-name">
                     <p><strong>{{ request.user.first_name }} {{ request.user.last_name }}</strong></p>
                 </div>
-                <!-- The role of the user -->
-                <div class="profile-role">
-                    <p><strong>Job Role</strong></p>
-                </div>
+               
                 <!-- The button that will navigate the user to edit their account details -->
                 <div class="edit-profile-button">
-                    <a href=""><strong>Change Profile Details</strong></a>
+                    <a href="{% url 'profile-settings' %}"><strong>Change Profile Details</strong></a>
                 </div>
             </div>
         </div>
