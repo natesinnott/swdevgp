@@ -87,7 +87,7 @@ class ProfileSettingsForm(forms.ModelForm):
                 self.add_error('current_password', 'The current password is incorrect')
             
             if new_password1 != new_password2:
-                self.add_error('new_password2', 'The two password fields didn't match')
+                self.add_error('new_password2', "The two password fields didn't match")
             
             # Validate the new password
             if new_password1:
