@@ -33,9 +33,9 @@ class Survey(models.Model):
 
 class SurveyResponse(models.Model):
     id = models.AutoField(primary_key=True)
-    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
-    session = models.ForeignKey('Session', on_delete=models.CASCADE)
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE) # in prod, change to protect
+    survey = models.ForeignKey(Survey, on_delete=models.CASCADE) # in prod, change to protect
+    session = models.ForeignKey('Session', on_delete=models.CASCADE) # in prod, change to protect
 
     class Meta:
         db_table = 'SurveyResponse'
@@ -58,7 +58,7 @@ class SurveyDetail(models.Model):
 
 class Session(models.Model):
     id = models.AutoField(primary_key=True)
-    survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
+    survey = models.ForeignKey(Survey, on_delete=models.CASCADE) # in prod, change to protect
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
 

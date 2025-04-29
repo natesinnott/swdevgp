@@ -32,7 +32,7 @@ class Department(models.Model):
 # Team model represents a team within a department
 class Team(models.Model):
     team = models.AutoField(db_column='teamID', primary_key=True)  
-    department = models.ForeignKey(Department, models.DO_NOTHING, db_column='departmentID', default=0)  
+    department = models.ForeignKey(Department, models.PROTECT, db_column='departmentID', default=0)  
     teamName = models.CharField(db_column='teamName', max_length=100) 
     teamLeaderID = models.IntegerField(db_column='teamLeaderID') 
 
@@ -45,7 +45,7 @@ class Team(models.Model):
 # Employee model represents an employee in the organisation
 class Employee(models.Model):
     employeeID = models.AutoField(db_column='employeeID', primary_key=True) 
-    team = models.ForeignKey('Team', models.DO_NOTHING, db_column='teamID', blank=True, null=True)  
+    team = models.ForeignKey('Team', models.PROTECT, db_column='teamID', blank=True, null=True)  
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     firstName = models.CharField(db_column='firstName', max_length=100)  
     lastName = models.CharField(db_column='lastName', max_length=100)  
