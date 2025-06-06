@@ -48,7 +48,7 @@
         <p>{{ message }}</p>
         <!--- buttons for goin back or get help --->
         <div style="margin-top: 20px;">
-            <a href="javascript:history.back()" class="button">Back</a>
+            <a href="{% url 'logout' %}" class="button">Sign Out</a>
             <a href="mailto:support@skyuk.com" class="button">Contact Admin</a>
         </div>
     </div>
