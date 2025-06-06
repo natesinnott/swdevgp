@@ -1,16 +1,4 @@
-@font-face {
-    font-family: 'SkyRegular';
-    src: url('/static/fonts/sky-regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 
-@font-face {
-    font-family: 'SkyMedium';
-    src: url('/static/fonts/sky-medium.ttf') format('truetype');
-    font-weight: bold; 
-    font-style: normal;
-}
 body {
     font-family: 'SkyRegular';
     background-color: #f0f2f5;
@@ -76,7 +64,6 @@ body {
 }
 
 .requirements-section {
-    /* keep your flex styles for vertical centering */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -133,17 +120,14 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    box-sizing: border-box; /* Important for padding not to affect width */
+    box-sizing: border-box;
 }
 
-/* Specific styling for the password field to accommodate an icon if needed */
 .password-field-wrapper {
     position: relative;
     width: 100%;
 }
 
-/* Note: The eye icon in the screenshot needs JS to function. 
-   This is a placeholder for its position. */
 .password-toggle-icon {
     position: absolute;
     top: 50%;
@@ -185,7 +169,6 @@ body {
 }
 
 
-/* style for all error msgs */
 .first-name-error, 
 .last-name-error, 
 .username-error, 
@@ -198,7 +181,6 @@ body {
     color: red;
 }
 
-/* apply red border to both input and dropdown if error */
 input.error, select.error {
     border: 2px solid red;
 }
