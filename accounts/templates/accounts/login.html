@@ -13,19 +13,18 @@
     <div id="mobile-overlay">
         <p>Please view this site on a desktop or tablet for the best experience.</p>
     </div>
-    <img src="{% static 'accounts/images/healthlogo.png' %}">
-    <form method="POST" class="login">
-
-        <h2>Login to your Sky Health Account</h2>
-        <div class="loginform"></div>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">login</button>
-        </div>
-
-    </form>
-    <div class="redirect-text">
-        <p>Don't have a Sky Health Account? <a href="{% url 'register' %}">Register</a>.</p>
+    <div class="login-container">
+        <img class="logo-img" src="{% static 'accounts/images/skylogo.ico' %}" alt="Sky Logo">
+        <h2 class="welcome-text">Welcome Back</h2>
+        <p class="sub-text">Login To Your Sky Health Account</p>
+        <form method="POST" class="login-form">
+            {% csrf_token %}
+            <div class="form-fields">
+                {{ form.as_p }}
+            </div>
+            <button type="submit">login</button>
+        </form>
+        <p class="register-link">Don’t have a Sky Health Account? <a href="{% url 'register' %}">Register</a></p>
     </div>
 </body>
 
