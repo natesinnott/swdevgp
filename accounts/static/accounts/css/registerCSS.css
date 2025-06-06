@@ -1,0 +1,186 @@
+
+body {
+    font-family: 'SkyRegular';
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 10px;
+}
+
+.signup-container {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sky-logo {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+.header-text {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header-text h1 {
+    font-size: 28px;
+    font-family: 'SkyMedium';
+    color: #777777;
+    margin: 0 0 5px 0;
+}
+
+.header-text p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+.signup-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    background-color: #ffffff;
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.signup-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+}
+
+.requirements-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    position: relative;
+    color: #555;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+
+
+
+.requirements-section h2 {
+    font-size: 24px;
+    font-weight: normal;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+
+
+.requirements-section ul li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.form-field {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-field input,
+.form-field select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.password-field-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+}
+
+.signup-button {
+    background-color: #0078d4;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.signup-button:hover {
+    background-color: #005a9e;
+}
+
+.login-redirect {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 17px;
+}
+
+.login-redirect a {
+    color: #0078d4;
+    text-decoration: none;
+}
+
+.login-redirect a:hover {
+    text-decoration: underline;
+}
+
+
+.first-name-error, 
+.last-name-error, 
+.username-error, 
+.email-error, 
+.password1-error, 
+.password2-error, 
+.team-selection-error {
+    font-weight: bold;
+    line-height: 1.5;
+    color: red;
+}
+
+input.error, select.error {
+    border: 2px solid red;
+}

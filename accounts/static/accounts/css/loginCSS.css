@@ -10,205 +10,94 @@
 @font-face {
     font-family: 'SkyMedium';
     src: url('/static/fonts/sky-medium.ttf') format('truetype');
-    font-weight: bold;
+    font-weight: bold; 
     font-style: normal;
 }
 
-/* overall page layout and bg color */
 body {
+    background-color: #f1f2f4;
     font-family: 'SkyRegular';
-    background-color: #f4f4f9;
-    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     margin: 0;
-    display: grid;
-    grid-template-rows: 30vh 50vh 15vh;
-    justify-items: center;
-    align-items: center; 
 }
 
-/* heading style */
-h2 {
+.login-container {
+    background-color: white;
+    padding: 40px 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.logo-img {
+    height: 80px;
+    margin-bottom: 0px;
+}
+
+.welcome-text {
+    font-size: 32px;
+    margin: 10px 10px;
     font-family: 'SkyMedium';
-    font-size: 2rem;
-    color: #2c3e50;
-    text-align: center;
-    margin-top: 5px; 
+    color: #777777;
 }
 
-/* logo img size */
-img {
-    width: fit-content;
-    height: fit-content;
-}
-
-/* form box styling */
-form {
-    width: 50vw; 
-    height: 50vh;
-    background-color: #d3d3d3; 
-    padding: 30px;
-    border-radius: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* login section text style */
-.login{
-    text-align: center;
-    font-size: 20px;
-}
-
-/* input field shape and padding */
-input{
-    border-radius: 12px;
-    padding: 0 10px; 
-}
-
-/* dropdown same style as input */
-select{
-    border-radius: 12px;
-    border: none;
-    padding: 0 10px; 
-}
-
-/* no border on inputs and buttons */
-input,
-button{
-    border: none;
-    
-}
-
-/* center inputs and btns inside login */
-.login input,
-.login button {
-    
-    margin: 10px auto;
-    display: block; 
-    border: none;
-}
-.login input{
-    height: 4vh;
-    width: 25vw;
-    text-align: center;
-}
-/* spacing above login form */
-.loginform{
-    margin-top: 10vh;
-    text-align: center;
-}
-
-/* style for already registered txt */
-.redirect-text {
+.sub-text {
     font-family: 'SkyRegular';
     font-size: 20px;
-    color: #555;
-    text-align: center;
+    margin: 0px 0px;
+    color: #888;
+    margin-bottom: 45px;
 }
 
-/* spacing above login btn */
-.login button{
-    margin-top: 10vh;
+.login-form p {
+    margin-bottom: 15px;
+    color: #888;
+    text-align: left;
 }
 
-/* main button style */
-button {
-    height: 5vh;
-    width: 10vw;
-    border-radius: 50px;
-    font-family: 'SkyMedium';
-    font-size: 16px;
-    color: #f4f4f9;
-    background-color: #17009a;
-    transition: background-color 0.3s, color 0.3s;
-    cursor: pointer;
-}
-/* button hover effect */
-button:hover {
-    background-color: #f4f4f9; 
-    color: #727272; 
-}
-
-/* links inside form */
-a {
-    color: rgb(0, 26, 255); 
-    text-decoration: none; 
-}
-
-/* link hover underline */
-a:hover {
-    text-decoration: underline; 
-}
-
-/* layout of signup form fields */
-.signupform {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 70px;
-    align-items: start;
-    padding-bottom: 20px;
-    height: 30vh;
-}
-/* size of signup inputs */
-.signup input{
-    width: 19vw;
-    height: 3vh;
-} 
-
-/* size of signup dropdown */
-.signup select{
-    width: 19vw;
-    height: 3vh;
-    
-}
-/* field list inside signup */
-.fields {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
+.login-form input[type="text"],
+.login-form input[type="password"] {
     width: 100%;
-    overflow-y: auto;
-}
-
-/* red border for error inputs */
-input.error {
-    border: 2px solid red;
-}
-
-/* box for help txt or errors */
-.password-help-text {
-    width: 18vw;
-    height: 26vh;
+    padding: 12px 15px;
     border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 20px;
-    color: #555;
+    border-radius: 8px;
+    margin-top: 5px;
     font-size: 14px;
-    line-height: 1.5;
-    overflow-y: auto;
 }
 
-/* style for register btn area */
-.register-button {
-    margin-top: 4vh;
-    display: block;
-    text-align: center;
+.login-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #377dff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
-/* style for all error msgs */
-.first-name-error, 
-.last-name-error, 
-.username-error, 
-.email-error, 
-.password1-error, 
-.password2-error, 
-.team-selection-error {
+.login-form button:hover {
+    background-color: #2666d0;
+}
+
+.register-link {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #888;
+}
+
+.register-link a {
+    color: #377dff;
     font-weight: bold;
-    line-height: 1.5;
-    color: red;
+    text-decoration: none;
 }
 
-/* apply red border to both input and dropdown if error */
-input.error, select.error {
-    border: 2px solid red;
+.register-link a:hover {
+    text-decoration: underline;
 }
