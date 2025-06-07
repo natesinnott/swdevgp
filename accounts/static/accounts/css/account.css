@@ -72,6 +72,7 @@
     color: #fd6843;
     font-size: 2vw;
     text-decoration: none;
+    font-weight: normal;
 }
 
 .profile-details {
@@ -145,6 +146,6 @@
 }
 
 .profile-box img {
-    width: 3.5vw;
-    height: 3.5vw;
+    width: 2.5vw;
+    height: auto;
 }
