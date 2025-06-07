@@ -184,3 +184,8 @@ body {
 input.error, select.error {
     border: 2px solid red;
 }
+
+#change-password {
+    margin-left: 220px;
+    margin-top: 60px;
+}

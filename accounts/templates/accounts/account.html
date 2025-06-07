@@ -43,7 +43,7 @@
         <!-- The profile details, including the name, role, and button to edit account details -->
         <div class="profile-details">
             <div class="profile-icon">
-                <img src="{% static 'accounts/images/ProfileIcon.png' %}">
+                <img src="{% static 'dashboard/images/profileicon.png' %}">
             </div>
             <!-- The profile meta information, including the name and role of the user -->
             <div class="profile-meta">
@@ -54,7 +54,7 @@
                
                 <!-- The button that will navigate the user to edit their account details -->
                 <div class="edit-profile-button">
-                    <a href="{% url 'profile-settings' %}"><strong>Change Profile Details</strong></a>
+                    <a href="{% url 'profile-settings' %}">Change Password</a>
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
                 </div>
                 <!-- The team of the user -->
                 <div class="profile-box profile-team">
-                    <img src="{% static 'accounts/images/Icon-4.png' %}">
+                    <img src="{% static 'dashboard/images/teamicon.png' %}">
                     <p>{{ request.user.team }}</p>
                 </div>
             </div>
