@@ -1,12 +1,13 @@
 #Authored by Nate
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from django.contrib.auth.forms import AuthenticationForm
-from .forms import RegisterForm, ProfileSettingsForm
-from .models import Employee
-from django.contrib.auth import logout, update_session_auth_hash
-from django.contrib import messages
+from django.urls import reverse_lazy
+from django.contrib.auth import login, update_session_auth_hash
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.decorators import login_required
+from .forms import RegisterForm
+from django.contrib.auth import logout
+
 
 
 def register(request):
@@ -39,24 +40,16 @@ def user_logout(request):
     return redirect("login")
 
 @login_required
-def profile_settings(request):
-    if request.method == 'POST':
-        form = ProfileSettingsForm(request.POST, instance=request.user)
-        if form.is_valid():
-            user = form.save()
-            # If password was changed, update the session to keep the user logged in
-            if form.cleaned_data.get('new_password1'):
-                update_session_auth_hash(request, user)
-                messages.success(request, 'Your profile and password have been updated successfully.')
-            else:
-                messages.success(request, 'Your profile has been updated successfully.')
-            return redirect('profile-settings')
-    else:
-        form = ProfileSettingsForm(instance=request.user)
-    
-    context = {
-        'form': form
-    }
-    return render(request, 'accounts/profile-settings.html', context)
+def account_view(request):
+    return render(request, "accounts/account.html", {"user": request.user})
 
-# Create your views here.
+class ChangePasswordView(PasswordChangeView):
+    form_class = PasswordChangeForm
+    template_name = "accounts/profile-settings.html"
+    def get_success_url(self):
+        return '../../../account'
+
+    def form_valid(self, form):
+        form.save()
+        update_session_auth_hash(self.request, form.user)
+        return super().form_valid(form)

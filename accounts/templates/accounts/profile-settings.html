@@ -1,161 +1,92 @@
 {% load static %}
 <!-- Authored by Joshua -->
 <html>
-
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/loginCSS.css' %}">
+  <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/registerCSS.css' %}"/>
     <script src="{% static 'javascripts/datetime.js' %}"></script>
     <title>Hi, {{ request.user.first_name }}</title>
-    <link rel="icon" href="{% static 'images/tablogo.png' %}" type="image/png">
+    <link rel="icon" href="{% static 'images/tablogo.png' %}" type="image/png"/>
+  </head>
 
-
-</head>
-
-<body>
+  <body>
     <div id="mobile-overlay">
-        <p>Please view this site on a desktop or tablet for the best experience.</p>
+      <p>
+        Please view this site on a desktop or tablet for the best experience.
+      </p>
     </div>
     <div class="welcome">
-        <h2>Hello, {{ request.user.first_name }}</h2>
+      <h2>Hello, {{ request.user.first_name }}</h2>
     </div>
-    <div id="datetime">
-        {% now "D j M H:i" %}
-    </div>
+    <div id="datetime">{% now "D j M H:i" %}</div>
     <script src="{% static 'javascripts/datetime.js' %}"></script>
 
     <nav>
-        <img src="{% static 'images/navbarlogo.png' %}">
-        <ul>
-
-            <li><a href="{% url 'dashboard' %}">Home</a></li>
-            <li><a href="{% url 'voting_survey' %}">My Survey</a></li>
-            <li><a href="{% url 'visualisation' %}">Trends</a></li>
-            <li class="active"><img src="{% static 'images/activenav.png' %}"><a href="{% url 'account' %}">Account</a></li>
-        </ul>
-        <a href="{% url 'logout' %}" class="logout-link">
-            <img src="{% static 'images/signout.png' %}">
-            <p>Sign out</p>
-        </a>
+      <img src="{% static 'images/navbarlogo.png' %}" />
+      <ul>
+        <li><a href="{% url 'dashboard' %}">Home</a></li>
+        <li><a href="{% url 'voting_survey' %}">My Survey</a></li>
+        <li><a href="{% url 'visualisation' %}">Trends</a></li>
+        <li class="active">
+          <img src="{% static 'images/activenav.png' %}" /><a href="{% url 'account' %}">Account</a>
+        </li>
+      </ul>
+      <a href="{% url 'logout' %}" class="logout-link">
+        <img src="{% static 'images/signout.png' %}" />
+        <p>Sign out</p>
+      </a>
     </nav>
-
-    <!-- Profile Edit Form -->
-<form method="POST" class="signup">
-    <h2>Update Profile</h2>
-    {% csrf_token %}
-    <div class="signupform">
-        <div class="fields">
-            <div class="username-field">
-                {{ form.username }}
-                {% if form.username.errors %}
-                <script>
-                    document.querySelector("[name='{{ form.username.name }}']").classList.add('error');
-                </script>
-                {% endif %}
-            </div>
-            <div class="email-field">
-                {{ form.email }}
-                {% if form.email.errors %}
-                <script>
-                    document.querySelector("[name='{{ form.email.name }}']").classList.add('error');
-                </script>
-                {% endif %}
-            </div>
-            <div class="password-field">
-                {{ form.current_password }}
-                {% if form.current_password.errors %}
-                <script>
-                    document.querySelector("[name='{{ form.current_password.name }}']").classList.add('error');
-                </script>
-                {% endif %}
-            </div>
-            <div class="new-password-field">
-                {{ form.new_password1 }}
-                {% if form.new_password1.errors or form.new_password2.errors %}
-                <script>
-                    document.querySelector("[name='{{ form.new_password1.name }}']").classList.add('error');
-                </script>
-                {% endif %}
-            </div>
-            <div class="confirm-password-field">
-                {{ form.new_password2 }}
-                {% if form.new_password1.errors or form.new_password2.errors %}
-                <script>
-                    document.querySelector("[name='{{ form.new_password2.name }}']").classList.add('error');
-                </script>
-                {% endif %}
-            </div>
-            <div class="team-selection">
-                {{ form.team }}
-                {% if form.team.errors %}
-                <script>
-                    document.querySelector("[name='{{ form.team.name }}']").classList.add('error');
-                </script>
-                {% endif %}
-            </div>
-        </div>
-        <div class="password-help-text">
-            {% if not form.username.errors and not form.email.errors and not form.current_password.errors and not form.new_password1.errors and not form.new_password2.errors and not form.team.errors %}
-            <p>Update your profile information below:</p>
-            <ul>
-                <li>Change your username</li>
-                <li>Update your email</li>
-                <li>Change your password</li>
-                <li>Select a different team</li>
-            </ul>
-            <p>Leave password fields empty if you don't want to change your password.</p>
+    <div class="signup-container" id="change-password">
+      <div class="signup-content">
+        <form method="post" class="signup-form">
+          {% csrf_token %}
+          <div class="form-field">
+            <label for="{{ form.old_password.id_for_label }}">Current Password</label>
+            {{ form.old_password }} 
+            {% if form.old_password.errors %}
+            <script>
+              document.querySelector("[name='{{ form.old_password.name }}']").classList.add("error");
+            </script>
             {% endif %}
-            
-            {% if form.username.errors %}
-            <div class="username-error">
-                {{ form.username.errors }}
-            </div>
+          </div>
+          <div class="form-field">
+            <label for="{{ form.new_password1.id_for_label }}">New Password</label>
+            {{ form.new_password1 }} 
+            {% if form.new_password1.errors or form.new_password2.errors %}
+            <script>
+              document.querySelector("[name='{{ form.new_password1.name }}']").classList.add("error");
+            </script>
             {% endif %}
-            {% if form.email.errors %}
-            <div class="email-error">
-                {{ form.email.errors }}
-            </div>
+          </div>
+          <div class="form-field">
+            <label for="{{ form.new_password2.id_for_label }}">Confirm New Password</label>
+            {{ form.new_password2 }} 
+            {% if form.new_password2.errors %}
+            <script>
+              document.querySelector("[name='{{ form.new_password2.name }}']").classList.add("error");
+            </script>
             {% endif %}
-            {% if form.current_password.errors %}
-            <div class="password-error">
-                {{ form.current_password.errors }}
-            </div>
-            {% endif %}
+          </div>
+          <button type="submit" class="signup-button">Change Password</button>
+        </form>
+        <div class="requirements-section">
+          <div class="password-help-text">
+            <h2>Requirements</h2>
+            {% if not form.errors %} 
+            {{ form.new_password1.help_text|safe }} 
+            {% endif%} 
             {% if form.new_password1.errors %}
             <div class="password1-error">
                 {{ form.new_password1.errors }}
             </div>
-            {% endif %}
+            {% endif %} 
             {% if form.new_password2.errors %}
             <div class="password2-error">
                 {{ form.new_password2.errors }}
             </div>
             {% endif %}
-            {% if form.team.errors %}
-            <div class="team-selection-error">
-                {{ form.team.errors }}
-            </div>
-            {% endif %}
+          </div>
         </div>
     </div>
-    <div class="register-button">
-        <button type="submit">Save Changes</button>
-    </div>
-</form>
-
-{% if messages %}
-<div class="messages">
-    {% for message in messages %}
-    <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
-        {{ message }}
-    </div>
-    {% endfor %}
-</div>
-{% endif %}
-
-
-
-
-</body>
-
+  </body>
 </html>
