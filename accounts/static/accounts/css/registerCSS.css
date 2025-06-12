@@ -189,3 +189,7 @@ input.error, select.error {
     margin-left: 220px;
     margin-top: 60px;
 }
+
+#change-password-container {
+    border-radius: 0px;
+}

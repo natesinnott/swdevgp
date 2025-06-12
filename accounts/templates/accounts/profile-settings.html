@@ -1,5 +1,4 @@
 {% load static %}
-<!-- Authored by Joshua -->
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}" />
@@ -37,7 +36,7 @@
       </a>
     </nav>
     <div class="signup-container" id="change-password">
-      <div class="signup-content">
+      <div class="signup-content" id="change-password-container">
         <form method="post" class="signup-form">
           {% csrf_token %}
           <div class="form-field">

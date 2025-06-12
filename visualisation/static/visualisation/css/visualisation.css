@@ -32,7 +32,7 @@ aside.filters {
     height: calc(100vh - 240px); /* fill viewport */
     min-height: auto;
     overflow-y: auto;
-
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
 /* Chart container: flex item that centers chart and fills vertical space */
@@ -47,7 +47,7 @@ section.chart-container {
     justify-content: center;
     align-items: center;
     height: calc(100vh - 240px); /* match filters height */
-
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
 /* Filter form elements styling */
