@@ -83,23 +83,23 @@ input[type="radio"] {
 .rating.good input[type="radio"] + label {
     background-color: white;
     border-left: 8px solid #10b981;
-    border-top: 1px solid#10b981;
-    border-right: 1px solid#10b981;
-    border-bottom: 1px solid#10b981;
+    border-top: 2px solid #e0e0e0;
+    border-right: 2px solid #e0e0e0;
+    border-bottom: 2px solid #e0e0e0;
 }
 .rating.average input[type="radio"] + label {
     background-color: white;
     border-left: 8px solid #ffa60c;
-    border-top: 1px solid#e8980c;
-    border-right: 1px solid#e8980c;
-    border-bottom: 1px solid#e8980c;
+    border-top: 2px solid #e0e0e0;
+    border-right: 2px solid #e0e0e0;
+    border-bottom: 2px solid #e0e0e0;
 }
 .rating.bad input[type="radio"] + label {
     background-color: white;
     border-left: 8px solid #ca0212;
-    border-top: 1px solid#ca0212;
-    border-right: 1px solid#ca0212;
-    border-bottom: 1px solid#ca0212;
+    border-top: 2px solid #e0e0e0;
+    border-right: 2px solid #e0e0e0;
+    border-bottom: 2px solid #e0e0e0;
 }
 
 .rating.good input[type="radio"]:checked + label {
